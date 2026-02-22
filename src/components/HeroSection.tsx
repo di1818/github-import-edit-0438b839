@@ -3,9 +3,8 @@ import { useRef } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const stats = [
-  { value: "8", label: "недель практики" },
-  { value: "20", label: "мест офлайн" },
-  { value: "4", label: "модуля" },
+  { value: "20", label: "мест офлайн · Казань" },
+  { value: "40", label: "мест онлайн · любая точка" },
 ];
 
 const HeroSection = () => {
@@ -68,8 +67,8 @@ const HeroSection = () => {
               className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed"
             >
               Ваш HR-менеджер пройдёт обучение до уровня HRBP и уже в процессе
-              начнёт внедрять систему подбора, адаптации и управления персоналом в вашей компании.
-              Офлайн в Казани (20 мест) или онлайн из любой точки.
+              начнёт внедрять систему подбора, адаптации и управления персоналом
+              в вашей компании.
             </motion.p>
 
             <motion.div
