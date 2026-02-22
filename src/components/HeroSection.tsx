@@ -4,7 +4,7 @@ import heroBg from "@/assets/hero-bg.jpg";
 
 const stats = [
   { value: "8", label: "недель практики" },
-  { value: "20", label: "мест" },
+  { value: "20", label: "мест офлайн" },
   { value: "4", label: "модуля" },
 ];
 
@@ -39,7 +39,7 @@ const HeroSection = () => {
             >
               <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
               <span className="text-sm font-medium text-accent-foreground">
-                Казань · Старт 10 марта · 20 мест
+                Казань · Старт 10 марта · Офлайн 20 мест + Онлайн
               </span>
             </motion.div>
 
@@ -58,7 +58,7 @@ const HeroSection = () => {
               transition={{ duration: 0.7, delay: 0.15 }}
               className="text-xl md:text-2xl font-semibold text-foreground mb-6"
             >
-              От «делаю руками» к управлению HR как системой
+              Перестаньте терять деньги на неэффективном найме
             </motion.p>
 
             <motion.p
@@ -67,8 +67,9 @@ const HeroSection = () => {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed"
             >
-              8-недельная офлайн-программа для HR-менеджеров, которые хотят выйти на уровень
-              HRBP: системный подбор, адаптация, метрики и аргументация перед бизнесом.
+              Обучим вашего HR-менеджера до уровня HRBP, который внедрит систему подбора,
+              адаптации и управления персоналом — и закроет ключевые кадровые боли вашего бизнеса.
+              Офлайн в Казани или онлайн из любой точки.
             </motion.p>
 
             <motion.div

@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 import { AlertTriangle, BarChart3, Users, Shuffle, MessageSquareOff, TrendingDown } from "lucide-react";
 
 const pains = [
-  { icon: Shuffle, title: "Хаос в подборе", desc: "Нет системы, каждый найм — с нуля, без воронки и контроля." },
-  { icon: MessageSquareOff, title: "Слабая аргументация", desc: "Не получается доказать руководству ценность HR-инициатив." },
-  { icon: BarChart3, title: "Нет HR-метрик", desc: "Нет цифр — нет управления. Работа вслепую." },
-  { icon: TrendingDown, title: "Формальная адаптация", desc: "Новички уходят в первые месяцы — теряете деньги и людей." },
-  { icon: Users, title: "HR в ручном режиме", desc: "Всё на себе, нет процессов — только операционка." },
-  { icon: AlertTriangle, title: "Нет роста в карьере", desc: "Выполняете задачи, но не растёте до стратегической роли." },
+  { icon: Shuffle, title: "Нанимаете не тех", desc: "Кандидаты не соответствуют ожиданиям — приходится увольнять и искать заново." },
+  { icon: TrendingDown, title: "Текучка в первые месяцы", desc: "Новые сотрудники уходят в первые 1–3 месяца — вы теряете деньги и время." },
+  { icon: BarChart3, title: "Сотрудники не дают результат", desc: "Люди работают, но не выполняют показатели — бизнес буксует." },
+  { icon: Users, title: "Нет понимания ролей", desc: "Сотрудники не понимают свою зону ответственности и чего от них ждут." },
+  { icon: MessageSquareOff, title: "HR не решает проблемы", desc: "HR-менеджер работает формально — нет системы, нет влияния на бизнес." },
+  { icon: AlertTriangle, title: "Потери растут", desc: "Каждый неудачный найм обходится компании в сотни тысяч рублей." },
 ];
 
 const PainsSection = () => (
@@ -22,7 +22,7 @@ const PainsSection = () => (
       >
         <h2 className="text-3xl md:text-5xl font-bold font-display mb-4">Знакомо?</h2>
         <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-          Эти проблемы мешают HR-менеджерам расти и приносить реальную пользу бизнесу
+          Эти проблемы стоят вашему бизнесу денег, времени и роста
         </p>
       </motion.div>
 

@@ -22,11 +22,11 @@ const ResultsSection = () => (
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold font-display mb-6">Что вы получите</h2>
+          <h2 className="text-3xl md:text-5xl font-bold font-display mb-6">Что получит ваш бизнес</h2>
           <p className="text-lg opacity-70 mb-8 leading-relaxed">
-            За 8 недель вы перейдёте от «делаю руками» к управлению HR как системой.
-            Понимание роли HR в бизнесе, управление наймом, адаптацией и метриками,
-            аргументация решений перед руководством.
+            За 8 недель ваш HR-менеджер выйдет на уровень HRBP и внедрит систему,
+            которая решает проблемы с наймом, текучкой и эффективностью команды.
+            Вы получите управляемый HR с измеримыми результатами.
           </p>
           <div className="flex flex-wrap gap-4">
             {metrics.map((m) => (
