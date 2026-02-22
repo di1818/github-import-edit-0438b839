@@ -21,7 +21,7 @@ const ApplicationSection = () => (
           Записаться на <span className="text-gradient">консультацию</span>
         </h2>
         <p className="text-muted-foreground text-lg mb-10">
-          Оставьте заявку — мы свяжемся с вами для бесплатной консультации и ответим на все вопросы
+          Оставьте заявку, напишите в Telegram или позвоните — мы ответим на все вопросы
         </p>
 
         <div className="bg-card border border-border rounded-2xl p-8 md:p-10 text-left">
@@ -42,23 +42,6 @@ const ApplicationSection = () => (
                 className="w-full rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring transition-shadow"
               />
             </div>
-            <div>
-              <label className="text-sm font-medium mb-2 block">Опыт в HR</label>
-              <select className="w-full rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring transition-shadow">
-                <option value="">Выберите</option>
-                <option value="1-3">1–3 года</option>
-                <option value="3-5">3–5 лет</option>
-                <option value="5+">5+ лет</option>
-              </select>
-            </div>
-            <div>
-              <label className="text-sm font-medium mb-2 block">Что хотите решить?</label>
-              <textarea
-                placeholder="Опишите кратко вашу задачу или вопрос"
-                rows={3}
-                className="w-full rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring transition-shadow resize-none"
-              />
-            </div>
             <button className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5">
               Отправить заявку
               <ArrowRight className="h-5 w-5" />
@@ -67,6 +50,16 @@ const ApplicationSection = () => (
               Нажимая кнопку, вы соглашаетесь с обработкой персональных данных
             </p>
           </div>
+        </div>
+
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-muted-foreground">
+          <a href="tel:+79871837315" className="flex items-center gap-2 hover:text-foreground transition-colors">
+            <span>📞</span> +7 (987) 183-73-15 — Екатерина
+          </a>
+          <span className="hidden sm:inline text-border">|</span>
+          <a href="https://t.me/" className="flex items-center gap-2 hover:text-foreground transition-colors">
+            <span>💬</span> Написать в Telegram
+          </a>
         </div>
 
         <div className="mt-12 grid grid-cols-3 gap-4 text-center">

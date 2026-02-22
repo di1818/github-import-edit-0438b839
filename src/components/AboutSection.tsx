@@ -27,12 +27,12 @@ const AboutSection = () => (
           <span className="text-sm font-medium text-primary mb-4 block">Преподаватель</span>
           <h2 className="text-3xl md:text-5xl font-bold font-display mb-6">Обо мне</h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-            Эксперт в области HR с многолетним опытом построения эффективных команд и процессов.
+            Эксперт в области HR с многолетним опытом построения эффективных команд и HR-процессов в бизнесе.
           </p>
           <blockquote className="border-l-4 border-primary pl-6 py-2 mb-8">
             <p className="text-lg italic text-foreground/80 leading-relaxed">
-              «Моя цель — передать вам не просто знания, а работающую систему, которая позволит
-              стать стратегическим партнером для бизнеса, а не просто исполнителем.»
+              «Я помогаю собственникам превратить HR из статьи расходов в инструмент роста бизнеса.
+              Ваш HR-менеджер получит систему, которая работает на результат.»
             </p>
           </blockquote>
           <div className="bg-accent rounded-xl p-6">
