@@ -1,290 +1,89 @@
 <!--
   HR Инструментарий — код для Tilda
-  Вставьте в блок T123 (HTML) или Zero Block → Embed HTML
-  Секция "Записаться на консультацию" убрана — добавьте стандартным блоком Tilda.
-  ВСЕ ЦВЕТА ЗАХАРДКОЖЕНЫ + !important чтобы Тильда не перезаписала.
+  INLINE СТИЛИ для защиты от перезаписи Тильдой
+  Секция "Записаться на консультацию" убрана.
 -->
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700;800&display=swap');
-
-/* ===== RESET & BASE ===== */
-.hr-site, .hr-site * { margin:0; padding:0; box-sizing:border-box !important; }
-.hr-site {
-  font-family: 'Inter', system-ui, sans-serif !important;
-  color: #1e2433 !important;
-  background: #faf9f7 !important;
-  -webkit-font-smoothing: antialiased;
-  line-height: 1.6 !important;
-}
-.hr-site h1,.hr-site h2,.hr-site h3,.hr-site h4 { font-family: 'Playfair Display', serif !important; line-height:1.2 !important; color: #1e2433 !important; }
-.hr-site a { text-decoration:none !important; color:inherit !important; }
-.hr-site img { max-width:100% !important; display:block !important; }
-.hr-site p { color: inherit; }
-
-/* ===== UTILITIES ===== */
-.hr-container { max-width:1200px !important; margin:0 auto !important; padding:0 2rem !important; }
-.hr-section { padding: 5rem 1rem !important; background: #faf9f7 !important; }
-.hr-section-alt { background: rgba(243,240,237,0.5) !important; }
-.hr-gradient-text {
-  background: linear-gradient(135deg, #d4724a, #b35a32) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-  color: transparent !important;
-}
-.hr-btn-primary {
-  display:inline-flex !important; align-items:center !important; justify-content:center !important; gap:0.5rem !important;
-  background: #d4724a !important; color:#ffffff !important; padding:1rem 2rem !important;
-  border-radius:0.5rem !important; font-size:1.125rem !important; font-weight:600 !important;
-  box-shadow: 0 4px 14px rgba(212,114,74,0.25) !important;
-  transition: all 0.3s !important; border:none !important; cursor:pointer !important;
-  font-family: 'Inter', sans-serif !important;
-}
-.hr-btn-primary:hover { box-shadow: 0 8px 24px rgba(212,114,74,0.3) !important; transform:translateY(-2px) !important; }
-.hr-btn-outline {
-  display:inline-flex !important; align-items:center !important; justify-content:center !important;
-  border:1px solid #eae6e1 !important; padding:1rem 2rem !important;
-  border-radius:0.5rem !important; font-size:1.125rem !important; font-weight:500 !important;
-  transition: all 0.3s !important; background:transparent !important; cursor:pointer !important;
-  font-family: 'Inter', sans-serif !important; color: #1e2433 !important;
-}
-.hr-btn-outline:hover { background: #f3f0ed !important; }
-
-/* ===== ANIMATIONS ===== */
-@keyframes hrFadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
-.hr-animate { opacity:0; animation: hrFadeUp 0.7s ease-out forwards; }
-.hr-animate-d1 { animation-delay:0.1s; }
-.hr-animate-d2 { animation-delay:0.2s; }
-.hr-animate-d3 { animation-delay:0.3s; }
-.hr-animate-d4 { animation-delay:0.4s; }
-.hr-animate-d5 { animation-delay:0.5s; }
-.hr-reveal { opacity:0; transform:translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.hr-reveal.hr-visible { opacity:1; transform:translateY(0); }
-
-/* ===== ICON CONTAINER ===== */
-.hr-icon { display:inline-flex !important; align-items:center !important; justify-content:center !important; width:48px !important; height:48px !important; border-radius:0.5rem !important; background:#faf0ec !important; flex-shrink:0 !important; }
-.hr-icon svg { width:24px !important; height:24px !important; stroke:#9e4a25 !important; fill:none !important; stroke-width:2 !important; stroke-linecap:round !important; stroke-linejoin:round !important; }
-.hr-icon-sm { width:40px !important; height:40px !important; }
-.hr-icon-sm svg { width:20px !important; height:20px !important; }
-
-/* ===== HERO ===== */
-.hr-hero { position:relative !important; min-height:100vh !important; display:flex !important; align-items:center !important; overflow:hidden !important; background:#faf9f7 !important; }
-.hr-hero-bg { position:absolute !important; inset:0 !important; z-index:0 !important; background:#faf9f7 !important; }
-.hr-hero-bg::after { content:'' !important; position:absolute !important; inset:0 !important; background:linear-gradient(135deg, #faf9f7 40%, transparent) !important; }
-.hr-hero .hr-container { position:relative !important; z-index:1 !important; padding-top:5rem !important; padding-bottom:5rem !important; }
-.hr-hero-grid { display:grid !important; grid-template-columns:1fr 1fr !important; gap:4rem !important; align-items:center !important; }
-.hr-hero-badge {
-  display:inline-flex !important; align-items:center !important; gap:0.5rem !important;
-  background:#faf0ec !important; border-radius:999px !important; padding:0.5rem 1rem !important; margin-bottom:2rem !important;
-}
-.hr-hero-badge .dot { width:8px !important; height:8px !important; border-radius:50% !important; background:#d4724a !important; animation: pulse 2s infinite !important; }
-@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
-.hr-hero-badge span { font-size:0.875rem !important; font-weight:500 !important; color:#9e4a25 !important; }
-.hr-hero h1 { font-size:clamp(2.5rem,5vw,4.5rem) !important; font-weight:700 !important; margin-bottom:0.75rem !important; }
-.hr-hero-sub { font-size:clamp(1.125rem,2vw,1.5rem) !important; font-weight:600 !important; margin-bottom:1.5rem !important; color:#1e2433 !important; font-family:'Inter',sans-serif !important; }
-.hr-hero-desc { font-size:1.125rem !important; color:#747a8a !important; margin-bottom:2.5rem !important; max-width:600px !important; line-height:1.7 !important; }
-.hr-hero-buttons { display:flex !important; flex-wrap:wrap !important; gap:1rem !important; }
-.hr-hero-stats { display:flex !important; align-items:center !important; gap:2rem !important; margin-top:3rem !important; }
-.hr-hero-stats .stat-val { font-size:1.5rem !important; font-weight:600 !important; color:#1e2433 !important; margin-right:0.5rem !important; }
-.hr-hero-stats .stat-label { font-size:0.875rem !important; color:#747a8a !important; }
-.hr-hero-stats .stat-divider { width:1px !important; height:16px !important; background:#eae6e1 !important; }
-
-.hr-hero-video {
-  background:#ffffff !important; border:1px solid #eae6e1 !important; border-radius:1rem !important;
-  overflow:hidden !important; box-shadow:0 25px 50px rgba(212,114,74,0.1) !important; aspect-ratio:16/9 !important;
-  display:flex !important; flex-direction:column !important; align-items:center !important; justify-content:center !important;
-}
-.hr-hero-video .play-btn {
-  width:64px !important; height:64px !important; border-radius:50% !important; background:rgba(212,114,74,0.1) !important;
-  display:flex !important; align-items:center !important; justify-content:center !important; margin-bottom:1rem !important;
-}
-.hr-hero-video .play-btn svg { width:32px !important; height:32px !important; fill:#d4724a !important; stroke:none !important; margin-left:4px !important; }
-.hr-hero-video p { font-size:0.875rem !important; color:#747a8a !important; font-weight:500 !important; }
-.hr-hero-video p.sub { font-size:0.75rem !important; opacity:0.6 !important; margin-top:0.25rem !important; }
-
-/* ===== PAINS ===== */
-.hr-pains-grid { display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1.5rem !important; }
-.hr-pain-card {
-  background:#ffffff !important; border:1px solid #eae6e1 !important; border-radius:0.75rem !important; padding:1.5rem !important;
-  transition: all 0.3s !important;
-}
-.hr-pain-card:hover { box-shadow:0 10px 30px rgba(212,114,74,0.05) !important; transform:translateY(-4px) !important; }
-.hr-pain-card h3 { font-family:'Inter',sans-serif !important; font-size:1.125rem !important; font-weight:600 !important; margin:1rem 0 0.5rem !important; color:#1e2433 !important; }
-.hr-pain-card p { font-size:0.875rem !important; color:#747a8a !important; line-height:1.6 !important; }
-
-/* ===== SECTION HEADERS ===== */
-.hr-section-header { text-align:center !important; margin-bottom:4rem !important; }
-.hr-section-header h2 { font-size:clamp(1.75rem,4vw,3rem) !important; font-weight:700 !important; margin-bottom:1rem !important; color:#1e2433 !important; }
-.hr-section-header p { font-size:1.125rem !important; color:#747a8a !important; max-width:560px !important; margin:0 auto !important; }
-
-/* ===== FOR WHOM ===== */
-.hr-whom-grid { display:grid !important; grid-template-columns:1fr 1fr !important; gap:2rem !important; max-width:900px !important; margin:0 auto !important; }
-.hr-whom-card { border-radius:1rem !important; padding:2rem !important; }
-.hr-whom-card.suitable { background:#faf0ec !important; border:1px solid rgba(212,114,74,0.2) !important; }
-.hr-whom-card.not-suitable { background:#ffffff !important; border:1px solid #eae6e1 !important; }
-.hr-whom-card h3 { font-family:'Inter',sans-serif !important; font-size:1.25rem !important; font-weight:600 !important; display:flex !important; align-items:center !important; gap:0.5rem !important; margin-bottom:1.5rem !important; }
-.hr-whom-card h3 svg { width:24px !important; height:24px !important; flex-shrink:0 !important; }
-.hr-whom-card.not-suitable h3 { color:#747a8a !important; }
-.hr-whom-card ul { list-style:none !important; }
-.hr-whom-card li { font-size:0.875rem !important; display:flex !important; align-items:flex-start !important; gap:0.75rem !important; margin-bottom:1rem !important; color:#1e2433 !important; }
-.hr-whom-card li .bullet { width:6px !important; height:6px !important; border-radius:50% !important; margin-top:6px !important; flex-shrink:0 !important; }
-.hr-whom-card.suitable .bullet { background:#d4724a !important; }
-.hr-whom-card.not-suitable .bullet { background:#747a8a !important; }
-.hr-whom-card.not-suitable li { color:#747a8a !important; }
-
-/* ===== PROGRAM ===== */
-.hr-program-grid { display:grid !important; grid-template-columns:1fr 1fr !important; gap:1.5rem !important; }
-.hr-module {
-  border:1px solid #eae6e1 !important; background:#ffffff !important; border-radius:1rem !important; padding:2rem !important;
-  transition: border-color 0.3s !important;
-}
-.hr-module:hover { border-color:rgba(212,114,74,0.3) !important; }
-.hr-module-head { display:flex !important; justify-content:space-between !important; align-items:flex-start !important; margin-bottom:1.5rem !important; }
-.hr-module-num { font-family:'Playfair Display',serif !important; font-size:3rem !important; font-weight:700 !important; color:rgba(234,230,225,0.8) !important; line-height:1 !important; -webkit-text-fill-color:rgba(234,230,225,0.8) !important; }
-.hr-module-weeks { font-size:0.75rem !important; font-weight:500 !important; color:#747a8a !important; background:#f3f0ed !important; padding:0.25rem 0.75rem !important; border-radius:999px !important; }
-.hr-module-title { display:flex !important; align-items:center !important; gap:0.75rem !important; margin-bottom:0.75rem !important; }
-.hr-module-title h3 { font-family:'Inter',sans-serif !important; font-size:1.25rem !important; font-weight:600 !important; color:#1e2433 !important; }
-.hr-module p { color:#747a8a !important; line-height:1.7 !important; }
-
-/* ===== RESULTS ===== */
-.hr-results { background:#1e2433 !important; color:#faf9f7 !important; padding:5rem 1rem !important; }
-.hr-results-grid { display:grid !important; grid-template-columns:1fr 1fr !important; gap:4rem !important; align-items:center !important; }
-.hr-results h2 { font-size:clamp(1.75rem,4vw,3rem) !important; font-weight:700 !important; margin-bottom:1.5rem !important; color:#faf9f7 !important; }
-.hr-results .desc { font-size:1.125rem !important; opacity:0.7 !important; margin-bottom:2rem !important; line-height:1.7 !important; color:#faf9f7 !important; }
-.hr-metrics { display:flex !important; flex-wrap:wrap !important; gap:1rem !important; }
-.hr-metric { padding:0.5rem 1rem !important; border:1px solid rgba(250,249,247,0.2) !important; border-radius:999px !important; font-size:0.875rem !important; opacity:0.8 !important; color:#faf9f7 !important; }
-.hr-artifacts h3 { font-size:1.25rem !important; font-weight:600 !important; opacity:0.8 !important; margin-bottom:1.5rem !important; font-family:'Inter',sans-serif !important; color:#faf9f7 !important; }
-.hr-artifact {
-  display:flex !important; align-items:center !important; gap:1rem !important; padding:1rem !important; border-radius:0.75rem !important;
-  background:rgba(250,249,247,0.05) !important; border:1px solid rgba(250,249,247,0.1) !important; margin-bottom:1rem !important;
-}
-.hr-artifact .hr-icon { background:rgba(212,114,74,0.2) !important; }
-.hr-artifact .hr-icon svg { stroke:#d4724a !important; }
-.hr-artifact span { font-weight:500 !important; color:#faf9f7 !important; }
-
-/* ===== ABOUT ===== */
-.hr-about-grid { display:grid !important; grid-template-columns:1fr 1fr !important; gap:5rem !important; align-items:center !important; }
-.hr-about-img { position:relative !important; }
-.hr-about-img .img-wrap { aspect-ratio:3/4 !important; border-radius:1rem !important; overflow:hidden !important; }
-.hr-about-img .img-wrap img { width:100% !important; height:100% !important; object-fit:cover !important; }
-.hr-about-img .deco { position:absolute !important; bottom:-16px !important; right:-16px !important; width:128px !important; height:128px !important; border-radius:1rem !important; background:rgba(212,114,74,0.1) !important; z-index:-1 !important; }
-.hr-about-label { font-size:0.875rem !important; font-weight:500 !important; color:#d4724a !important; margin-bottom:1rem !important; display:block !important; }
-.hr-about h2 { font-size:clamp(1.75rem,4vw,3rem) !important; font-weight:700 !important; margin-bottom:1.5rem !important; color:#1e2433 !important; }
-.hr-about .about-desc { font-size:1.125rem !important; color:#747a8a !important; line-height:1.7 !important; margin-bottom:1.5rem !important; }
-.hr-about blockquote { border-left:4px solid #d4724a !important; padding:0.5rem 0 0.5rem 1.5rem !important; margin-bottom:2rem !important; }
-.hr-about blockquote p { font-size:1.125rem !important; font-style:italic !important; color:rgba(30,36,51,0.8) !important; line-height:1.7 !important; }
-.hr-about .support-box { background:#faf0ec !important; border-radius:0.75rem !important; padding:1.5rem !important; }
-.hr-about .support-box .label { font-size:0.875rem !important; color:#747a8a !important; font-weight:500 !important; margin-bottom:0.75rem !important; }
-.hr-about .support-box p { color:#1e2433 !important; }
-
-/* ===== PRICING ===== */
-.hr-pricing-grid { display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1.5rem !important; align-items:center !important; }
-.hr-plan {
-  border:1px solid #eae6e1 !important; background:#ffffff !important; border-radius:1rem !important; padding:2rem !important;
-  display:flex !important; flex-direction:column !important;
-}
-.hr-plan.highlighted {
-  background:#1e2433 !important; color:#faf9f7 !important; border:2px solid #1e2433 !important;
-  box-shadow:0 25px 50px rgba(0,0,0,0.15) !important; transform:scale(1.05) !important; position:relative !important;
-}
-.hr-plan .popular-badge {
-  position:absolute !important; top:-12px !important; left:50% !important; transform:translateX(-50%) !important;
-  background:#d4724a !important; color:#ffffff !important; font-size:0.75rem !important; font-weight:600 !important;
-  padding:0.25rem 1rem !important; border-radius:999px !important;
-}
-.hr-plan h3 { font-family:'Inter',sans-serif !important; font-size:1.25rem !important; font-weight:600 !important; margin-bottom:0.5rem !important; }
-.hr-plan .plan-desc { font-size:0.875rem !important; color:#747a8a !important; margin-bottom:1.5rem !important; }
-.hr-plan.highlighted h3 { color:#faf9f7 !important; }
-.hr-plan.highlighted .plan-desc { opacity:0.7 !important; color:#faf9f7 !important; }
-.hr-plan .plan-price { font-family:'Playfair Display',serif !important; font-size:2.5rem !important; font-weight:700 !important; margin-bottom:1.5rem !important; }
-.hr-plan.highlighted .plan-price { color:#faf9f7 !important; -webkit-text-fill-color:#faf9f7 !important; }
-.hr-plan .plan-price span { font-size:0.875rem !important; font-weight:400 !important; opacity:0.6 !important; margin-left:0.25rem !important; }
-.hr-plan ul { list-style:none !important; flex:1 !important; margin-bottom:2rem !important; }
-.hr-plan li { font-size:0.875rem !important; display:flex !important; align-items:center !important; gap:0.75rem !important; margin-bottom:0.75rem !important; }
-.hr-plan li svg { width:16px !important; height:16px !important; stroke:#d4724a !important; fill:none !important; stroke-width:2.5 !important; flex-shrink:0 !important; }
-.hr-plan.highlighted li { color:#faf9f7 !important; }
-.hr-plan .plan-btn {
-  display:inline-flex !important; align-items:center !important; justify-content:center !important; padding:0.75rem 1.5rem !important;
-  border-radius:0.5rem !important; font-weight:600 !important; font-size:0.875rem !important; transition:all 0.3s !important; border:none !important; cursor:pointer !important;
-  font-family:'Inter',sans-serif !important; text-align:center !important;
-}
-.hr-plan .plan-btn.primary { background:#d4724a !important; color:#ffffff !important; }
-.hr-plan .plan-btn.primary:hover { box-shadow:0 8px 24px rgba(212,114,74,0.3) !important; }
-.hr-plan .plan-btn.secondary { background:#f3f0ed !important; color:#1e2433 !important; }
-.hr-plan .plan-btn.secondary:hover { background:#faf0ec !important; }
-
-/* ===== FOOTER ===== */
-.hr-footer { border-top:1px solid #eae6e1 !important; padding:2.5rem 1rem !important; background:#faf9f7 !important; }
-.hr-footer-inner { display:flex !important; align-items:center !important; justify-content:space-between !important; flex-wrap:wrap !important; gap:1rem !important; font-size:0.875rem !important; color:#747a8a !important; }
-.hr-footer nav { display:flex !important; gap:1.5rem !important; }
-.hr-footer a { color:#747a8a !important; }
-.hr-footer a:hover { color:#1e2433 !important; }
-.hr-footer-right { display:flex !important; align-items:center !important; gap:1rem !important; flex-wrap:wrap !important; }
-.hr-footer-divider { color:#eae6e1 !important; }
-
-/* ===== RESPONSIVE ===== */
+.hr-site,.hr-site *{margin:0;padding:0;box-sizing:border-box}
+.hr-site{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
+.hr-site a{text-decoration:none;color:inherit}
+.hr-site img{max-width:100%;display:block}
+.hr-site ul{list-style:none}
+.hrc{max-width:1200px;margin:0 auto;padding:0 2rem}
+@keyframes hrFadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes hrPulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hr-a{opacity:0;animation:hrFadeUp .7s ease-out forwards}
+.hr-a1{animation-delay:.1s}.hr-a2{animation-delay:.2s}.hr-a3{animation-delay:.3s}.hr-a5{animation-delay:.5s}
+.hr-r{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.hr-r.hr-v{opacity:1;transform:translateY(0)}
 @media(max-width:1024px){
-  .hr-hero-grid { grid-template-columns:1fr !important; }
-  .hr-hero-video-wrap { display:none !important; }
-  .hr-results-grid, .hr-about-grid { grid-template-columns:1fr !important; }
+  .hr-hero-grid{grid-template-columns:1fr!important}
+  .hr-video-wrap{display:none!important}
+  .hr-2col{grid-template-columns:1fr!important}
 }
 @media(max-width:768px){
-  .hr-pains-grid, .hr-program-grid, .hr-pricing-grid { grid-template-columns:1fr !important; }
-  .hr-whom-grid { grid-template-columns:1fr !important; }
-  .hr-plan.highlighted { transform:none !important; }
-  .hr-hero-buttons { flex-direction:column !important; }
-  .hr-hero-stats { flex-direction:column !important; align-items:flex-start !important; gap:1rem !important; }
-  .hr-section { padding:3rem 1rem !important; }
-  .hr-footer-inner { flex-direction:column !important; text-align:center !important; }
+  .hr-3col,.hr-2col,.hr-price-grid{grid-template-columns:1fr!important}
+  .hr-plan-hl{transform:none!important}
+  .hr-hero-btns{flex-direction:column!important}
+  .hr-hero-stats{flex-direction:column!important;align-items:flex-start!important;gap:1rem!important}
+  .hr-sec{padding:3rem 1rem!important}
+  .hr-footer-inner{flex-direction:column!important;text-align:center!important}
 }
 </style>
 
-<div class="hr-site">
+<div class="hr-site" style="color:#1e2433;background:#faf9f7;">
 
 <!-- ===== HERO ===== -->
-<section class="hr-hero">
-  <div class="hr-hero-bg"></div>
-  <div class="hr-container">
-    <div class="hr-hero-grid">
+<section style="position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:#faf9f7;">
+  <div class="hrc" style="position:relative;z-index:1;padding-top:5rem;padding-bottom:5rem;">
+    <div class="hr-hero-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
       <div>
-        <div class="hr-hero-badge hr-animate">
-          <div class="dot"></div>
-          <span>Казань · Старт 10 марта · Офлайн 20 мест + Онлайн</span>
+        <!-- Badge -->
+        <div class="hr-a" style="display:inline-flex;align-items:center;gap:0.5rem;background:#faf0ec;border-radius:999px;padding:0.5rem 1rem;margin-bottom:2rem;">
+          <div style="width:8px;height:8px;border-radius:50%;background:#d4724a;animation:hrPulse 2s infinite;"></div>
+          <span style="font-size:0.875rem;font-weight:500;color:#9e4a25;">Казань · Старт 10 марта · Офлайн 20 мест + Онлайн</span>
         </div>
 
-        <h1 class="hr-animate hr-animate-d1"><span class="hr-gradient-text">HR Инструментарий</span></h1>
+        <!-- Title -->
+        <h1 class="hr-a hr-a1" style="font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:700;margin-bottom:0.75rem;line-height:1.2;">
+          <span style="background:linear-gradient(135deg,#d4724a,#b35a32);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">HR Инструментарий</span>
+        </h1>
 
-        <p class="hr-hero-sub hr-animate hr-animate-d2">Перестаньте терять деньги на неэффективном найме</p>
+        <p class="hr-a hr-a2" style="font-size:clamp(1.125rem,2vw,1.5rem);font-weight:600;margin-bottom:1.5rem;color:#1e2433;">Перестаньте терять деньги на неэффективном найме</p>
 
-        <p class="hr-hero-desc hr-animate hr-animate-d2">
+        <p class="hr-a hr-a2" style="font-size:1.125rem;color:#747a8a;margin-bottom:2.5rem;max-width:600px;line-height:1.7;">
           Ваш HR-менеджер пройдёт обучение до уровня HRBP и уже в процессе
           начнёт внедрять систему подбора, адаптации и управления персоналом
           в вашей компании.
         </p>
 
-        <div class="hr-hero-buttons hr-animate hr-animate-d3">
-          <a href="#application" class="hr-btn-primary">Записаться на консультацию</a>
-          <a href="#program" class="hr-btn-outline">Подробнее о программе</a>
+        <div class="hr-a hr-a3 hr-hero-btns" style="display:flex;flex-wrap:wrap;gap:1rem;">
+          <a href="#application" style="display:inline-flex;align-items:center;justify-content:center;background:#d4724a;color:#ffffff;padding:1rem 2rem;border-radius:0.5rem;font-size:1.125rem;font-weight:600;font-family:'Inter',sans-serif;box-shadow:0 4px 14px rgba(212,114,74,0.25);transition:all .3s;">Записаться на консультацию</a>
+          <a href="#program" style="display:inline-flex;align-items:center;justify-content:center;border:1px solid #eae6e1;padding:1rem 2rem;border-radius:0.5rem;font-size:1.125rem;font-weight:500;font-family:'Inter',sans-serif;color:#1e2433;background:transparent;transition:all .3s;">Подробнее о программе</a>
         </div>
 
-        <div class="hr-hero-stats hr-animate hr-animate-d5">
+        <div class="hr-a hr-a5 hr-hero-stats" style="display:flex;align-items:center;gap:2rem;margin-top:3rem;">
           <div style="display:flex;align-items:center;gap:0.5rem;">
-            <span class="stat-val">20</span><span class="stat-label">мест офлайн · Казань</span>
+            <span style="font-size:1.5rem;font-weight:600;color:#1e2433;">20</span>
+            <span style="font-size:0.875rem;color:#747a8a;">мест офлайн · Казань</span>
           </div>
-          <div class="stat-divider"></div>
+          <div style="width:1px;height:16px;background:#eae6e1;"></div>
           <div style="display:flex;align-items:center;gap:0.5rem;">
-            <span class="stat-val">40</span><span class="stat-label">мест онлайн · любая точка</span>
+            <span style="font-size:1.5rem;font-weight:600;color:#1e2433;">40</span>
+            <span style="font-size:0.875rem;color:#747a8a;">мест онлайн · любая точка</span>
           </div>
         </div>
       </div>
 
-      <div class="hr-hero-video-wrap hr-animate hr-animate-d3">
-        <div class="hr-hero-video">
-          <div class="play-btn">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <!-- Video -->
+      <div class="hr-a hr-a3 hr-video-wrap">
+        <div style="background:#ffffff;border:1px solid #eae6e1;border-radius:1rem;overflow:hidden;box-shadow:0 25px 50px rgba(212,114,74,0.1);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+          <div style="width:64px;height:64px;border-radius:50%;background:rgba(212,114,74,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg viewBox="0 0 24 24" style="width:32px;height:32px;fill:#d4724a;margin-left:4px;"><path d="M8 5v14l11-7z"/></svg>
           </div>
-          <p>Видео о программе</p>
-          <p class="sub">HR Инструментарий</p>
+          <p style="font-size:0.875rem;color:#747a8a;font-weight:500;">Видео о программе</p>
+          <p style="font-size:0.75rem;color:#747a8a;opacity:0.6;margin-top:0.25rem;">HR Инструментарий</p>
         </div>
       </div>
     </div>
@@ -292,60 +91,60 @@
 </section>
 
 <!-- ===== PAINS ===== -->
-<section class="hr-section hr-section-alt">
-  <div class="hr-container">
-    <div class="hr-section-header hr-reveal">
-      <h2>Знакомо?</h2>
-      <p>Эти проблемы стоят вашему бизнесу денег, времени и роста</p>
+<section class="hr-sec" style="padding:5rem 1rem;background:rgba(243,240,237,0.5);">
+  <div class="hrc">
+    <div class="hr-r" style="text-align:center;margin-bottom:4rem;">
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,3rem);font-weight:700;margin-bottom:1rem;color:#1e2433;">Знакомо?</h2>
+      <p style="font-size:1.125rem;color:#747a8a;max-width:560px;margin:0 auto;">Эти проблемы стоят вашему бизнесу денег, времени и роста</p>
     </div>
-    <div class="hr-pains-grid">
+    <div class="hr-3col" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
 
-      <div class="hr-pain-card hr-reveal">
-        <div class="hr-icon">
-          <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+      <div class="hr-r" style="background:#ffffff;border:1px solid #eae6e1;border-radius:0.75rem;padding:1.5rem;">
+        <div style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:0.5rem;background:#faf0ec;">
+          <svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:#9e4a25;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
         </div>
-        <h3>Нанимаете не тех</h3>
-        <p>Кандидаты не соответствуют ожиданиям — приходится увольнять и искать заново.</p>
+        <h3 style="font-family:'Inter',sans-serif;font-size:1.125rem;font-weight:600;margin:1rem 0 0.5rem;color:#1e2433;">Нанимаете не тех</h3>
+        <p style="font-size:0.875rem;color:#747a8a;line-height:1.6;">Кандидаты не соответствуют ожиданиям — приходится увольнять и искать заново.</p>
       </div>
 
-      <div class="hr-pain-card hr-reveal">
-        <div class="hr-icon">
-          <svg viewBox="0 0 24 24"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>
+      <div class="hr-r" style="background:#ffffff;border:1px solid #eae6e1;border-radius:0.75rem;padding:1.5rem;">
+        <div style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:0.5rem;background:#faf0ec;">
+          <svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:#9e4a25;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>
         </div>
-        <h3>Текучка в первые месяцы</h3>
-        <p>Новые сотрудники уходят в первые 1–3 месяца — вы теряете деньги и время.</p>
+        <h3 style="font-family:'Inter',sans-serif;font-size:1.125rem;font-weight:600;margin:1rem 0 0.5rem;color:#1e2433;">Текучка в первые месяцы</h3>
+        <p style="font-size:0.875rem;color:#747a8a;line-height:1.6;">Новые сотрудники уходят в первые 1–3 месяца — вы теряете деньги и время.</p>
       </div>
 
-      <div class="hr-pain-card hr-reveal">
-        <div class="hr-icon">
-          <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <div class="hr-r" style="background:#ffffff;border:1px solid #eae6e1;border-radius:0.75rem;padding:1.5rem;">
+        <div style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:0.5rem;background:#faf0ec;">
+          <svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:#9e4a25;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         </div>
-        <h3>Сотрудники не дают результат</h3>
-        <p>Люди работают, но не выполняют показатели — бизнес буксует.</p>
+        <h3 style="font-family:'Inter',sans-serif;font-size:1.125rem;font-weight:600;margin:1rem 0 0.5rem;color:#1e2433;">Сотрудники не дают результат</h3>
+        <p style="font-size:0.875rem;color:#747a8a;line-height:1.6;">Люди работают, но не выполняют показатели — бизнес буксует.</p>
       </div>
 
-      <div class="hr-pain-card hr-reveal">
-        <div class="hr-icon">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <div class="hr-r" style="background:#ffffff;border:1px solid #eae6e1;border-radius:0.75rem;padding:1.5rem;">
+        <div style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:0.5rem;background:#faf0ec;">
+          <svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:#9e4a25;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h3>Нет понимания ролей</h3>
-        <p>Сотрудники не понимают свою зону ответственности и чего от них ждут.</p>
+        <h3 style="font-family:'Inter',sans-serif;font-size:1.125rem;font-weight:600;margin:1rem 0 0.5rem;color:#1e2433;">Нет понимания ролей</h3>
+        <p style="font-size:0.875rem;color:#747a8a;line-height:1.6;">Сотрудники не понимают свою зону ответственности и чего от них ждут.</p>
       </div>
 
-      <div class="hr-pain-card hr-reveal">
-        <div class="hr-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="9" y2="10"/><line x1="15" y1="10" x2="15" y2="10"/></svg>
+      <div class="hr-r" style="background:#ffffff;border:1px solid #eae6e1;border-radius:0.75rem;padding:1.5rem;">
+        <div style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:0.5rem;background:#faf0ec;">
+          <svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:#9e4a25;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
-        <h3>HR не решает проблемы</h3>
-        <p>HR-менеджер работает формально — нет системы, нет влияния на бизнес.</p>
+        <h3 style="font-family:'Inter',sans-serif;font-size:1.125rem;font-weight:600;margin:1rem 0 0.5rem;color:#1e2433;">HR не решает проблемы</h3>
+        <p style="font-size:0.875rem;color:#747a8a;line-height:1.6;">HR-менеджер работает формально — нет системы, нет влияния на бизнес.</p>
       </div>
 
-      <div class="hr-pain-card hr-reveal">
-        <div class="hr-icon">
-          <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <div class="hr-r" style="background:#ffffff;border:1px solid #eae6e1;border-radius:0.75rem;padding:1.5rem;">
+        <div style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:0.5rem;background:#faf0ec;">
+          <svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:#9e4a25;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         </div>
-        <h3>Потери растут</h3>
-        <p>Каждый неудачный найм обходится компании в сотни тысяч рублей.</p>
+        <h3 style="font-family:'Inter',sans-serif;font-size:1.125rem;font-weight:600;margin:1rem 0 0.5rem;color:#1e2433;">Потери растут</h3>
+        <p style="font-size:0.875rem;color:#747a8a;line-height:1.6;">Каждый неудачный найм обходится компании в сотни тысяч рублей.</p>
       </div>
 
     </div>
@@ -353,34 +152,34 @@
 </section>
 
 <!-- ===== FOR WHOM ===== -->
-<section class="hr-section">
-  <div class="hr-container">
-    <div class="hr-section-header hr-reveal">
-      <h2>Для кого эта программа</h2>
+<section class="hr-sec" style="padding:5rem 1rem;background:#faf9f7;">
+  <div class="hrc">
+    <div class="hr-r" style="text-align:center;margin-bottom:4rem;">
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,3rem);font-weight:700;color:#1e2433;">Для кого эта программа</h2>
     </div>
-    <div class="hr-whom-grid">
-      <div class="hr-whom-card suitable hr-reveal">
-        <h3>
-          <svg viewBox="0 0 24 24" style="stroke:#d4724a !important;fill:none !important;stroke-width:2 !important;stroke-linecap:round !important;stroke-linejoin:round !important;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <div class="hr-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:900px;margin:0 auto;">
+      <div class="hr-r" style="background:#faf0ec;border:1px solid rgba(212,114,74,0.2);border-radius:1rem;padding:2rem;">
+        <h3 style="font-family:'Inter',sans-serif;font-size:1.25rem;font-weight:600;display:flex;align-items:center;gap:0.5rem;margin-bottom:1.5rem;color:#1e2433;">
+          <svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:#d4724a;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           Подходит
         </h3>
         <ul>
-          <li><div class="bullet"></div>Собственники с командой от 10 человек</li>
-          <li><div class="bullet"></div>Есть HR-менеджер, но нет системы</li>
-          <li><div class="bullet"></div>Текучка и проблемы с наймом</li>
-          <li><div class="bullet"></div>Готовы инвестировать в рост команды</li>
+          <li style="font-size:0.875rem;display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;color:#1e2433;"><div style="width:6px;height:6px;border-radius:50%;background:#d4724a;margin-top:6px;flex-shrink:0;"></div>Собственники с командой от 10 человек</li>
+          <li style="font-size:0.875rem;display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;color:#1e2433;"><div style="width:6px;height:6px;border-radius:50%;background:#d4724a;margin-top:6px;flex-shrink:0;"></div>Есть HR-менеджер, но нет системы</li>
+          <li style="font-size:0.875rem;display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;color:#1e2433;"><div style="width:6px;height:6px;border-radius:50%;background:#d4724a;margin-top:6px;flex-shrink:0;"></div>Текучка и проблемы с наймом</li>
+          <li style="font-size:0.875rem;display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;color:#1e2433;"><div style="width:6px;height:6px;border-radius:50%;background:#d4724a;margin-top:6px;flex-shrink:0;"></div>Готовы инвестировать в рост команды</li>
         </ul>
       </div>
-      <div class="hr-whom-card not-suitable hr-reveal">
-        <h3>
-          <svg viewBox="0 0 24 24" style="stroke:#747a8a !important;fill:none !important;stroke-width:2 !important;stroke-linecap:round !important;stroke-linejoin:round !important;"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+      <div class="hr-r" style="background:#ffffff;border:1px solid #eae6e1;border-radius:1rem;padding:2rem;">
+        <h3 style="font-family:'Inter',sans-serif;font-size:1.25rem;font-weight:600;display:flex;align-items:center;gap:0.5rem;margin-bottom:1.5rem;color:#747a8a;">
+          <svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:#747a8a;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
           Не подходит
         </h3>
         <ul>
-          <li><div class="bullet"></div>Нет HR-менеджера в штате</li>
-          <li><div class="bullet"></div>Нет готовности к изменениям</li>
-          <li><div class="bullet"></div>Компания на стадии стартапа без команды</li>
-          <li><div class="bullet"></div>Ищете разовую услугу, а не систему</li>
+          <li style="font-size:0.875rem;display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;color:#747a8a;"><div style="width:6px;height:6px;border-radius:50%;background:#747a8a;margin-top:6px;flex-shrink:0;"></div>Нет HR-менеджера в штате</li>
+          <li style="font-size:0.875rem;display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;color:#747a8a;"><div style="width:6px;height:6px;border-radius:50%;background:#747a8a;margin-top:6px;flex-shrink:0;"></div>Нет готовности к изменениям</li>
+          <li style="font-size:0.875rem;display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;color:#747a8a;"><div style="width:6px;height:6px;border-radius:50%;background:#747a8a;margin-top:6px;flex-shrink:0;"></div>Компания на стадии стартапа без команды</li>
+          <li style="font-size:0.875rem;display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;color:#747a8a;"><div style="width:6px;height:6px;border-radius:50%;background:#747a8a;margin-top:6px;flex-shrink:0;"></div>Ищете разовую услугу, а не систему</li>
         </ul>
       </div>
     </div>
@@ -388,68 +187,70 @@
 </section>
 
 <!-- ===== PROGRAM ===== -->
-<section id="program" class="hr-section">
-  <div class="hr-container">
-    <div class="hr-section-header hr-reveal">
-      <h2>Программа: <span class="hr-gradient-text">4 модуля</span></h2>
-      <p>8 недель, 1 раз в неделю по 2 часа. Офлайн в Казани (20 мест) или онлайн. Практика и внедрение в вашей компании.</p>
+<section id="program" class="hr-sec" style="padding:5rem 1rem;background:#faf9f7;">
+  <div class="hrc">
+    <div class="hr-r" style="text-align:center;margin-bottom:4rem;">
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,3rem);font-weight:700;margin-bottom:1rem;color:#1e2433;">
+        Программа: <span style="background:linear-gradient(135deg,#d4724a,#b35a32);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">4 модуля</span>
+      </h2>
+      <p style="font-size:1.125rem;color:#747a8a;max-width:560px;margin:0 auto;">8 недель, 1 раз в неделю по 2 часа. Офлайн в Казани (20 мест) или онлайн. Практика и внедрение в вашей компании.</p>
     </div>
-    <div class="hr-program-grid">
+    <div class="hr-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
 
-      <div class="hr-module hr-reveal">
-        <div class="hr-module-head">
-          <span class="hr-module-num">01</span>
-          <span class="hr-module-weeks">Недели 1–2</span>
+      <div class="hr-r" style="border:1px solid #eae6e1;background:#ffffff;border-radius:1rem;padding:2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;">
+          <span style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:rgba(234,230,225,0.8);line-height:1;">01</span>
+          <span style="font-size:0.75rem;font-weight:500;color:#747a8a;background:#f3f0ed;padding:0.25rem 0.75rem;border-radius:999px;">Недели 1–2</span>
         </div>
-        <div class="hr-module-title">
-          <div class="hr-icon hr-icon-sm">
-            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+          <div style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:0.5rem;background:#faf0ec;">
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#9e4a25;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
           </div>
-          <h3>Роль HR в бизнесе</h3>
+          <h3 style="font-family:'Inter',sans-serif;font-size:1.25rem;font-weight:600;color:#1e2433;">Роль HR в бизнесе</h3>
         </div>
-        <p>Как HR влияет на прибыль, как выстроить управляемую HR-функцию и начать решать кадровые проблемы системно.</p>
+        <p style="color:#747a8a;line-height:1.7;">Как HR влияет на прибыль, как выстроить управляемую HR-функцию и начать решать кадровые проблемы системно.</p>
       </div>
 
-      <div class="hr-module hr-reveal">
-        <div class="hr-module-head">
-          <span class="hr-module-num">02</span>
-          <span class="hr-module-weeks">Недели 3–4</span>
+      <div class="hr-r" style="border:1px solid #eae6e1;background:#ffffff;border-radius:1rem;padding:2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;">
+          <span style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:rgba(234,230,225,0.8);line-height:1;">02</span>
+          <span style="font-size:0.75rem;font-weight:500;color:#747a8a;background:#f3f0ed;padding:0.25rem 0.75rem;border-radius:999px;">Недели 3–4</span>
         </div>
-        <div class="hr-module-title">
-          <div class="hr-icon hr-icon-sm">
-            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+          <div style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:0.5rem;background:#faf0ec;">
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#9e4a25;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           </div>
-          <h3>Подбор как система</h3>
+          <h3 style="font-family:'Inter',sans-serif;font-size:1.25rem;font-weight:600;color:#1e2433;">Подбор как система</h3>
         </div>
-        <p>Профиль должности, воронка найма, структурированное интервью — чтобы нанимать тех, кто даёт результат.</p>
+        <p style="color:#747a8a;line-height:1.7;">Профиль должности, воронка найма, структурированное интервью — чтобы нанимать тех, кто даёт результат.</p>
       </div>
 
-      <div class="hr-module hr-reveal">
-        <div class="hr-module-head">
-          <span class="hr-module-num">03</span>
-          <span class="hr-module-weeks">Недели 5–6</span>
+      <div class="hr-r" style="border:1px solid #eae6e1;background:#ffffff;border-radius:1rem;padding:2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;">
+          <span style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:rgba(234,230,225,0.8);line-height:1;">03</span>
+          <span style="font-size:0.75rem;font-weight:500;color:#747a8a;background:#f3f0ed;padding:0.25rem 0.75rem;border-radius:999px;">Недели 5–6</span>
         </div>
-        <div class="hr-module-title">
-          <div class="hr-icon hr-icon-sm">
-            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+          <div style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:0.5rem;background:#faf0ec;">
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#9e4a25;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
           </div>
-          <h3>Адаптация + метрики</h3>
+          <h3 style="font-family:'Inter',sans-serif;font-size:1.25rem;font-weight:600;color:#1e2433;">Адаптация + метрики</h3>
         </div>
-        <p>Система адаптации, снижающая текучку + HR-метрики для контроля эффективности команды.</p>
+        <p style="color:#747a8a;line-height:1.7;">Система адаптации, снижающая текучку + HR-метрики для контроля эффективности команды.</p>
       </div>
 
-      <div class="hr-module hr-reveal">
-        <div class="hr-module-head">
-          <span class="hr-module-num">04</span>
-          <span class="hr-module-weeks">Недели 7–8</span>
+      <div class="hr-r" style="border:1px solid #eae6e1;background:#ffffff;border-radius:1rem;padding:2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;">
+          <span style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:rgba(234,230,225,0.8);line-height:1;">04</span>
+          <span style="font-size:0.75rem;font-weight:500;color:#747a8a;background:#f3f0ed;padding:0.25rem 0.75rem;border-radius:999px;">Недели 7–8</span>
         </div>
-        <div class="hr-module-title">
-          <div class="hr-icon hr-icon-sm">
-            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+          <div style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:0.5rem;background:#faf0ec;">
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#9e4a25;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
           </div>
-          <h3>AI-инструменты в HR</h3>
+          <h3 style="font-family:'Inter',sans-serif;font-size:1.25rem;font-weight:600;color:#1e2433;">AI-инструменты в HR</h3>
         </div>
-        <p>Прикладные AI-инструменты для подбора, аналитики и автоматизации рутины — только то, что работает.</p>
+        <p style="color:#747a8a;line-height:1.7;">Прикладные AI-инструменты для подбора, аналитики и автоматизации рутины — только то, что работает.</p>
       </div>
 
     </div>
@@ -457,67 +258,67 @@
 </section>
 
 <!-- ===== RESULTS ===== -->
-<section class="hr-results">
-  <div class="hr-container">
-    <div class="hr-results-grid">
-      <div class="hr-reveal">
-        <h2>Что получит ваш бизнес</h2>
-        <p class="desc">
+<section style="background:#1e2433;color:#faf9f7;padding:5rem 1rem;">
+  <div class="hrc">
+    <div class="hr-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+      <div class="hr-r">
+        <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,3rem);font-weight:700;margin-bottom:1.5rem;color:#faf9f7;">Что получит ваш бизнес</h2>
+        <p style="font-size:1.125rem;opacity:0.7;margin-bottom:2rem;line-height:1.7;color:#faf9f7;">
           За 8 недель ваш HR-менеджер выйдет на уровень HRBP и внедрит систему,
           которая решает проблемы с наймом, текучкой и эффективностью команды.
           Вы получите управляемый HR с измеримыми результатами.
         </p>
-        <div class="hr-metrics">
-          <span class="hr-metric">Текучесть</span>
-          <span class="hr-metric">eNPS</span>
-          <span class="hr-metric">Скорость закрытия</span>
-          <span class="hr-metric">Качество найма</span>
-          <span class="hr-metric">Влияние на прибыль</span>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;">
+          <span style="padding:0.5rem 1rem;border:1px solid rgba(250,249,247,0.2);border-radius:999px;font-size:0.875rem;opacity:0.8;color:#faf9f7;">Текучесть</span>
+          <span style="padding:0.5rem 1rem;border:1px solid rgba(250,249,247,0.2);border-radius:999px;font-size:0.875rem;opacity:0.8;color:#faf9f7;">eNPS</span>
+          <span style="padding:0.5rem 1rem;border:1px solid rgba(250,249,247,0.2);border-radius:999px;font-size:0.875rem;opacity:0.8;color:#faf9f7;">Скорость закрытия</span>
+          <span style="padding:0.5rem 1rem;border:1px solid rgba(250,249,247,0.2);border-radius:999px;font-size:0.875rem;opacity:0.8;color:#faf9f7;">Качество найма</span>
+          <span style="padding:0.5rem 1rem;border:1px solid rgba(250,249,247,0.2);border-radius:999px;font-size:0.875rem;opacity:0.8;color:#faf9f7;">Влияние на прибыль</span>
         </div>
       </div>
-      <div class="hr-artifacts hr-reveal">
-        <h3>Артефакты программы</h3>
+      <div class="hr-r">
+        <h3 style="font-size:1.25rem;font-weight:600;opacity:0.8;margin-bottom:1.5rem;font-family:'Inter',sans-serif;color:#faf9f7;">Артефакты программы</h3>
 
-        <div class="hr-artifact">
-          <div class="hr-icon hr-icon-sm">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <div style="display:flex;align-items:center;gap:1rem;padding:1rem;border-radius:0.75rem;background:rgba(250,249,247,0.05);border:1px solid rgba(250,249,247,0.1);margin-bottom:1rem;">
+          <div style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:0.5rem;background:rgba(212,114,74,0.2);flex-shrink:0;">
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#d4724a;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           </div>
-          <span>Шаблоны ключевых HR-документов</span>
+          <span style="font-weight:500;color:#faf9f7;">Шаблоны ключевых HR-документов</span>
         </div>
 
-        <div class="hr-artifact">
-          <div class="hr-icon hr-icon-sm">
-            <svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+        <div style="display:flex;align-items:center;gap:1rem;padding:1rem;border-radius:0.75rem;background:rgba(250,249,247,0.05);border:1px solid rgba(250,249,247,0.1);margin-bottom:1rem;">
+          <div style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:0.5rem;background:rgba(212,114,74,0.2);flex-shrink:0;">
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#d4724a;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
           </div>
-          <span>Воронка подбора</span>
+          <span style="font-weight:500;color:#faf9f7;">Воронка подбора</span>
         </div>
 
-        <div class="hr-artifact">
-          <div class="hr-icon hr-icon-sm">
-            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <div style="display:flex;align-items:center;gap:1rem;padding:1rem;border-radius:0.75rem;background:rgba(250,249,247,0.05);border:1px solid rgba(250,249,247,0.1);margin-bottom:1rem;">
+          <div style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:0.5rem;background:rgba(212,114,74,0.2);flex-shrink:0;">
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#d4724a;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           </div>
-          <span>Структура интервью</span>
+          <span style="font-weight:500;color:#faf9f7;">Структура интервью</span>
         </div>
 
-        <div class="hr-artifact">
-          <div class="hr-icon hr-icon-sm">
-            <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <div style="display:flex;align-items:center;gap:1rem;padding:1rem;border-radius:0.75rem;background:rgba(250,249,247,0.05);border:1px solid rgba(250,249,247,0.1);margin-bottom:1rem;">
+          <div style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:0.5rem;background:rgba(212,114,74,0.2);flex-shrink:0;">
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#d4724a;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           </div>
-          <span>План адаптации</span>
+          <span style="font-weight:500;color:#faf9f7;">План адаптации</span>
         </div>
 
-        <div class="hr-artifact">
-          <div class="hr-icon hr-icon-sm">
-            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <div style="display:flex;align-items:center;gap:1rem;padding:1rem;border-radius:0.75rem;background:rgba(250,249,247,0.05);border:1px solid rgba(250,249,247,0.1);margin-bottom:1rem;">
+          <div style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:0.5rem;background:rgba(212,114,74,0.2);flex-shrink:0;">
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#d4724a;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
           </div>
-          <span>Список HR-метрик и шаблоны отчётов</span>
+          <span style="font-weight:500;color:#faf9f7;">Список HR-метрик и шаблоны отчётов</span>
         </div>
 
-        <div class="hr-artifact">
-          <div class="hr-icon hr-icon-sm">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+        <div style="display:flex;align-items:center;gap:1rem;padding:1rem;border-radius:0.75rem;background:rgba(250,249,247,0.05);border:1px solid rgba(250,249,247,0.1);margin-bottom:1rem;">
+          <div style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:0.5rem;background:rgba(212,114,74,0.2);flex-shrink:0;">
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#d4724a;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
           </div>
-          <span>Итоговый проект внедрения</span>
+          <span style="font-weight:500;color:#faf9f7;">Итоговый проект внедрения</span>
         </div>
       </div>
     </div>
@@ -525,26 +326,26 @@
 </section>
 
 <!-- ===== ABOUT ===== -->
-<section id="about" class="hr-section hr-about">
-  <div class="hr-container">
-    <div class="hr-about-grid">
-      <div class="hr-about-img hr-reveal">
-        <div class="img-wrap">
-          <!-- Замените src на ваше изображение в Tilda -->
-          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=800&fit=crop" alt="Преподаватель программы">
+<section id="about" class="hr-sec" style="padding:5rem 1rem;background:#faf9f7;">
+  <div class="hrc">
+    <div class="hr-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+      <div class="hr-r" style="position:relative;">
+        <div style="aspect-ratio:3/4;border-radius:1rem;overflow:hidden;">
+          <!-- ФОТО: замените src на URL вашего загруженного в Tilda изображения -->
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=800&fit=crop" alt="Преподаватель программы" style="width:100%;height:100%;object-fit:cover;">
         </div>
-        <div class="deco"></div>
+        <div style="position:absolute;bottom:-16px;right:-16px;width:128px;height:128px;border-radius:1rem;background:rgba(212,114,74,0.1);z-index:-1;"></div>
       </div>
-      <div class="hr-reveal">
-        <span class="hr-about-label">Преподаватель</span>
-        <h2>Обо мне</h2>
-        <p class="about-desc">Эксперт в области HR с многолетним опытом построения эффективных команд и HR-процессов в бизнесе.</p>
-        <blockquote>
-          <p>«Я помогаю собственникам превратить HR из статьи расходов в инструмент роста бизнеса. Ваш HR-менеджер получит систему, которая работает на результат.»</p>
+      <div class="hr-r">
+        <span style="font-size:0.875rem;font-weight:500;color:#d4724a;margin-bottom:1rem;display:block;">Преподаватель</span>
+        <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,3rem);font-weight:700;margin-bottom:1.5rem;color:#1e2433;">Обо мне</h2>
+        <p style="font-size:1.125rem;color:#747a8a;line-height:1.7;margin-bottom:1.5rem;">Эксперт в области HR с многолетним опытом построения эффективных команд и HR-процессов в бизнесе.</p>
+        <blockquote style="border-left:4px solid #d4724a;padding:0.5rem 0 0.5rem 1.5rem;margin-bottom:2rem;">
+          <p style="font-size:1.125rem;font-style:italic;color:rgba(30,36,51,0.8);line-height:1.7;">«Я помогаю собственникам превратить HR из статьи расходов в инструмент роста бизнеса. Ваш HR-менеджер получит систему, которая работает на результат.»</p>
         </blockquote>
-        <div class="support-box">
-          <p class="label">Сопровождение после программы:</p>
-          <p>6 месяцев в Telegram-чате с разбором кейсов 1 раз в месяц</p>
+        <div style="background:#faf0ec;border-radius:0.75rem;padding:1.5rem;">
+          <p style="font-size:0.875rem;color:#747a8a;font-weight:500;margin-bottom:0.75rem;">Сопровождение после программы:</p>
+          <p style="color:#1e2433;">6 месяцев в Telegram-чате с разбором кейсов 1 раз в месяц</p>
         </div>
       </div>
     </div>
@@ -552,55 +353,58 @@
 </section>
 
 <!-- ===== PRICING ===== -->
-<section id="pricing" class="hr-section hr-section-alt">
-  <div class="hr-container">
-    <div class="hr-section-header hr-reveal">
-      <h2>Стоимость</h2>
-      <p>Выберите формат участия. Цены одинаковы для офлайн и онлайн.</p>
+<section id="pricing" class="hr-sec" style="padding:5rem 1rem;background:rgba(243,240,237,0.5);">
+  <div class="hrc">
+    <div class="hr-r" style="text-align:center;margin-bottom:4rem;">
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,3rem);font-weight:700;margin-bottom:1rem;color:#1e2433;">Стоимость</h2>
+      <p style="font-size:1.125rem;color:#747a8a;">Выберите формат участия. Цены одинаковы для офлайн и онлайн.</p>
     </div>
-    <div class="hr-pricing-grid">
+    <div class="hr-price-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:center;">
 
-      <div class="hr-plan hr-reveal">
-        <h3>Со скидкой 50%</h3>
-        <p class="plan-desc">Скидка в обмен на возможность показать результаты обучения по изменению метрик в вашей компании</p>
-        <div class="plan-price">60 000<span>₽</span></div>
-        <ul>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Полная программа обучения</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Все артефакты и шаблоны</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>6 месяцев сопровождения</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Разбор кейсов 1 раз/мес</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Замер метрик 6 и 12 месяцев</li>
+      <!-- Plan 1 -->
+      <div class="hr-r" style="border:1px solid #eae6e1;background:#ffffff;border-radius:1rem;padding:2rem;display:flex;flex-direction:column;">
+        <h3 style="font-family:'Inter',sans-serif;font-size:1.25rem;font-weight:600;margin-bottom:0.5rem;color:#1e2433;">Со скидкой 50%</h3>
+        <p style="font-size:0.875rem;color:#747a8a;margin-bottom:1.5rem;">Скидка в обмен на возможность показать результаты обучения по изменению метрик в вашей компании</p>
+        <div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;margin-bottom:1.5rem;color:#1e2433;">60 000<span style="font-size:0.875rem;font-weight:400;opacity:0.6;margin-left:0.25rem;">₽</span></div>
+        <ul style="flex:1;margin-bottom:2rem;">
+          <li style="font-size:0.875rem;display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;color:#1e2433;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#d4724a;fill:none;stroke-width:2.5;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Полная программа обучения</li>
+          <li style="font-size:0.875rem;display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;color:#1e2433;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#d4724a;fill:none;stroke-width:2.5;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Все артефакты и шаблоны</li>
+          <li style="font-size:0.875rem;display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;color:#1e2433;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#d4724a;fill:none;stroke-width:2.5;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>6 месяцев сопровождения</li>
+          <li style="font-size:0.875rem;display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;color:#1e2433;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#d4724a;fill:none;stroke-width:2.5;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Разбор кейсов 1 раз/мес</li>
+          <li style="font-size:0.875rem;display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;color:#1e2433;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#d4724a;fill:none;stroke-width:2.5;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Замер метрик 6 и 12 месяцев</li>
         </ul>
-        <a href="#application" class="plan-btn secondary">Записаться</a>
+        <a href="#application" style="display:inline-flex;align-items:center;justify-content:center;padding:0.75rem 1.5rem;border-radius:0.5rem;font-weight:600;font-size:0.875rem;font-family:'Inter',sans-serif;background:#f3f0ed;color:#1e2433;text-align:center;">Записаться</a>
       </div>
 
-      <div class="hr-plan highlighted hr-reveal">
-        <span class="popular-badge">Популярный</span>
-        <h3>Базовый</h3>
-        <p class="plan-desc">Полная программа с конфиденциальностью. Ваши кейсы и компания — только ваши.</p>
-        <div class="plan-price">120 000<span>₽</span></div>
-        <ul>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Полная программа обучения</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Все артефакты и шаблоны</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>6 месяцев сопровождения</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Разбор кейсов 1 раз/мес</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Полная конфиденциальность</li>
+      <!-- Plan 2 (highlighted) -->
+      <div class="hr-r hr-plan-hl" style="background:#1e2433;color:#faf9f7;border:2px solid #1e2433;border-radius:1rem;padding:2rem;display:flex;flex-direction:column;box-shadow:0 25px 50px rgba(0,0,0,0.15);transform:scale(1.05);position:relative;">
+        <span style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#d4724a;color:#ffffff;font-size:0.75rem;font-weight:600;padding:0.25rem 1rem;border-radius:999px;">Популярный</span>
+        <h3 style="font-family:'Inter',sans-serif;font-size:1.25rem;font-weight:600;margin-bottom:0.5rem;color:#faf9f7;">Базовый</h3>
+        <p style="font-size:0.875rem;color:#faf9f7;opacity:0.7;margin-bottom:1.5rem;">Полная программа с конфиденциальностью. Ваши кейсы и компания — только ваши.</p>
+        <div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;margin-bottom:1.5rem;color:#faf9f7;">120 000<span style="font-size:0.875rem;font-weight:400;opacity:0.6;margin-left:0.25rem;">₽</span></div>
+        <ul style="flex:1;margin-bottom:2rem;">
+          <li style="font-size:0.875rem;display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;color:#faf9f7;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#d4724a;fill:none;stroke-width:2.5;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Полная программа обучения</li>
+          <li style="font-size:0.875rem;display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;color:#faf9f7;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#d4724a;fill:none;stroke-width:2.5;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Все артефакты и шаблоны</li>
+          <li style="font-size:0.875rem;display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;color:#faf9f7;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#d4724a;fill:none;stroke-width:2.5;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>6 месяцев сопровождения</li>
+          <li style="font-size:0.875rem;display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;color:#faf9f7;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#d4724a;fill:none;stroke-width:2.5;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Разбор кейсов 1 раз/мес</li>
+          <li style="font-size:0.875rem;display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;color:#faf9f7;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#d4724a;fill:none;stroke-width:2.5;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Полная конфиденциальность</li>
         </ul>
-        <a href="#application" class="plan-btn primary">Записаться</a>
+        <a href="#application" style="display:inline-flex;align-items:center;justify-content:center;padding:0.75rem 1.5rem;border-radius:0.5rem;font-weight:600;font-size:0.875rem;font-family:'Inter',sans-serif;background:#d4724a;color:#ffffff;text-align:center;">Записаться</a>
       </div>
 
-      <div class="hr-plan hr-reveal">
-        <h3>Обучение + Аудит</h3>
-        <p class="plan-desc">Программа + аудит HR-процессов вашей компании + внедрение под контролем эксперта</p>
-        <div class="plan-price">250 000<span>₽</span></div>
-        <ul>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Всё из базового пакета</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Аудит HR-процессов компании</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Внедрение под контролем</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Индивидуальное сопровождение</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Максимальный результат</li>
+      <!-- Plan 3 -->
+      <div class="hr-r" style="border:1px solid #eae6e1;background:#ffffff;border-radius:1rem;padding:2rem;display:flex;flex-direction:column;">
+        <h3 style="font-family:'Inter',sans-serif;font-size:1.25rem;font-weight:600;margin-bottom:0.5rem;color:#1e2433;">Обучение + Аудит</h3>
+        <p style="font-size:0.875rem;color:#747a8a;margin-bottom:1.5rem;">Программа + аудит HR-процессов вашей компании + внедрение под контролем эксперта</p>
+        <div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;margin-bottom:1.5rem;color:#1e2433;">250 000<span style="font-size:0.875rem;font-weight:400;opacity:0.6;margin-left:0.25rem;">₽</span></div>
+        <ul style="flex:1;margin-bottom:2rem;">
+          <li style="font-size:0.875rem;display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;color:#1e2433;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#d4724a;fill:none;stroke-width:2.5;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Всё из базового пакета</li>
+          <li style="font-size:0.875rem;display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;color:#1e2433;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#d4724a;fill:none;stroke-width:2.5;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Аудит HR-процессов компании</li>
+          <li style="font-size:0.875rem;display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;color:#1e2433;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#d4724a;fill:none;stroke-width:2.5;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Внедрение под контролем</li>
+          <li style="font-size:0.875rem;display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;color:#1e2433;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#d4724a;fill:none;stroke-width:2.5;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Индивидуальное сопровождение</li>
+          <li style="font-size:0.875rem;display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;color:#1e2433;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#d4724a;fill:none;stroke-width:2.5;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Максимальный результат</li>
         </ul>
-        <a href="#application" class="plan-btn secondary">Записаться</a>
+        <a href="#application" style="display:inline-flex;align-items:center;justify-content:center;padding:0.75rem 1.5rem;border-radius:0.5rem;font-weight:600;font-size:0.875rem;font-family:'Inter',sans-serif;background:#f3f0ed;color:#1e2433;text-align:center;">Записаться</a>
       </div>
 
     </div>
@@ -608,18 +412,18 @@
 </section>
 
 <!-- ===== FOOTER ===== -->
-<footer class="hr-footer">
-  <div class="hr-container">
-    <div class="hr-footer-inner">
-      <p>© 2025 HR Инструментарий. Казань.</p>
-      <div class="hr-footer-right">
-        <nav>
-          <a href="#program">Программа</a>
-          <a href="#pricing">Стоимость</a>
-          <a href="#application">Записаться</a>
+<footer style="border-top:1px solid #eae6e1;padding:2.5rem 1rem;background:#faf9f7;">
+  <div class="hrc">
+    <div class="hr-footer-inner" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:0.875rem;color:#747a8a;">
+      <p style="color:#747a8a;">© 2025 HR Инструментарий. Казань.</p>
+      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <nav style="display:flex;gap:1.5rem;">
+          <a href="#program" style="color:#747a8a;">Программа</a>
+          <a href="#pricing" style="color:#747a8a;">Стоимость</a>
+          <a href="#application" style="color:#747a8a;">Записаться</a>
         </nav>
-        <span class="hr-footer-divider">|</span>
-        <a href="tel:+79871837315">+7 (987) 183-73-15</a>
+        <span style="color:#eae6e1;">|</span>
+        <a href="tel:+79871837315" style="color:#747a8a;">+7 (987) 183-73-15</a>
       </div>
     </div>
   </div>
@@ -629,16 +433,12 @@
 
 <script>
 (function(){
-  var els = document.querySelectorAll('.hr-reveal');
-  if ('IntersectionObserver' in window) {
-    var obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('hr-visible'); obs.unobserve(e.target); }
-      });
-    }, { threshold:0.1 });
-    els.forEach(function(el){ obs.observe(el); });
-  } else {
-    els.forEach(function(el){ el.classList.add('hr-visible'); });
-  }
+  var els=document.querySelectorAll('.hr-r');
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('hr-v');obs.unobserve(e.target);}});
+    },{threshold:0.1});
+    els.forEach(function(el){obs.observe(el);});
+  }else{els.forEach(function(el){el.classList.add('hr-v');});}
 })();
 </script>
