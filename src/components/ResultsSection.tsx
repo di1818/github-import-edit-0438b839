@@ -17,10 +17,10 @@ const ResultsSection = () => (
     <div className="container">
       <div className="grid lg:grid-cols-2 gap-16 items-center">
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
+          initial={{ opacity: 0, x: -16 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
         >
           <h2 className="text-3xl md:text-5xl font-bold font-display mb-6">Что получит ваш бизнес</h2>
           <p className="text-lg opacity-70 mb-8 leading-relaxed">
@@ -38,20 +38,20 @@ const ResultsSection = () => (
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
+          initial={{ opacity: 0, x: 16 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
         >
           <h3 className="text-xl font-semibold mb-6 opacity-80">Артефакты программы</h3>
           <div className="space-y-4">
             {artifacts.map((item, i) => (
               <motion.div
                 key={item.text}
-                initial={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: 16 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.3 + i * 0.08 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.35, delay: 0.2 + i * 0.06, ease: "easeOut" }}
                 className="flex items-center gap-4 p-4 rounded-xl bg-background/5 border border-background/10"
               >
                 <div className="h-10 w-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0">

@@ -6,10 +6,10 @@ const AboutSection = () => (
     <div className="container">
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.97 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           className="relative"
         >
           <div className="aspect-[3/4] rounded-2xl overflow-hidden">
@@ -19,10 +19,10 @@ const AboutSection = () => (
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
         >
           <span className="text-sm font-medium text-primary mb-4 block">Преподаватель</span>
           <h2 className="text-3xl md:text-5xl font-bold font-display mb-6">Обо мне</h2>

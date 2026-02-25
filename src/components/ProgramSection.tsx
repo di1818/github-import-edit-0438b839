@@ -30,10 +30,10 @@ const ProgramSection = () => (
         {modules.map((mod, i) => (
           <motion.div
             key={mod.num}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.4, delay: i * 0.08, ease: "easeOut" }}
             className="group relative rounded-2xl border border-border bg-card p-8 hover:border-primary/30 transition-all duration-300"
           >
             <div className="flex items-start justify-between mb-6">
