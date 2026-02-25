@@ -1,4 +1,5 @@
 import { FileText, GitBranch, MessageCircle, BarChart3, ClipboardCheck, Award } from "lucide-react";
+import Reveal from "./Reveal";
 
 const metrics = ["Текучесть", "eNPS", "Скорость закрытия", "Качество найма", "Влияние на прибыль"];
 
@@ -15,7 +16,7 @@ const ResultsSection = () => (
   <section className="section-padding bg-foreground text-background">
     <div className="container">
       <div className="grid lg:grid-cols-2 gap-16 items-center">
-        <div>
+        <Reveal direction="left">
           <h2 className="text-3xl md:text-5xl font-bold font-display mb-6">Что получит ваш бизнес</h2>
           <p className="text-lg opacity-70 mb-8 leading-relaxed">
             За 8 недель ваш HR-менеджер выйдет на уровень HRBP и внедрит систему,
@@ -29,9 +30,9 @@ const ResultsSection = () => (
               </span>
             ))}
           </div>
-        </div>
+        </Reveal>
 
-        <div>
+        <Reveal direction="right" delay={150}>
           <h3 className="text-xl font-semibold mb-6 opacity-80">Артефакты программы</h3>
           <div className="space-y-4">
             {artifacts.map((item) => (
@@ -46,7 +47,7 @@ const ResultsSection = () => (
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
     </div>
   </section>

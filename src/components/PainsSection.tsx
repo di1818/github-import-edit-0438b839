@@ -1,4 +1,5 @@
 import { AlertTriangle, BarChart3, Users, Shuffle, MessageSquareOff, TrendingDown } from "lucide-react";
+import Reveal from "./Reveal";
 
 const pains = [
   { icon: Shuffle, title: "Нанимаете не тех", desc: "Кандидаты не соответствуют ожиданиям — приходится увольнять и искать заново." },
@@ -12,25 +13,24 @@ const pains = [
 const PainsSection = () => (
   <section className="section-padding bg-secondary/50">
     <div className="container">
-      <div className="text-center mb-16">
+      <Reveal className="text-center mb-16">
         <h2 className="text-3xl md:text-5xl font-bold font-display mb-4">Знакомо?</h2>
         <p className="text-muted-foreground text-lg max-w-xl mx-auto">
           Эти проблемы стоят вашему бизнесу денег, времени и роста
         </p>
-      </div>
+      </Reveal>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {pains.map((pain) => (
-          <div
-            key={pain.title}
-            className="rounded-xl bg-card p-6 border border-border hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1"
-          >
-            <div className="h-12 w-12 rounded-lg bg-accent flex items-center justify-center mb-4">
-              <pain.icon className="h-6 w-6 text-accent-foreground" />
+        {pains.map((pain, i) => (
+          <Reveal key={pain.title} delay={i * 80}>
+            <div className="rounded-xl bg-card p-6 border border-border hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 h-full">
+              <div className="h-12 w-12 rounded-lg bg-accent flex items-center justify-center mb-4">
+                <pain.icon className="h-6 w-6 text-accent-foreground" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">{pain.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{pain.desc}</p>
             </div>
-            <h3 className="text-lg font-semibold mb-2">{pain.title}</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">{pain.desc}</p>
-          </div>
+          </Reveal>
         ))}
       </div>
     </div>
