@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
 const plans = [
@@ -28,25 +27,15 @@ const plans = [
 const PricingSection = () => (
   <section id="pricing" className="section-padding bg-secondary/50">
     <div className="container">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-16"
-      >
+      <div className="text-center mb-16">
         <h2 className="text-3xl md:text-5xl font-bold font-display mb-4">Стоимость</h2>
         <p className="text-muted-foreground text-lg">Выберите формат участия. Цены одинаковы для офлайн и онлайн.</p>
-      </motion.div>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-        {plans.map((plan, i) => (
-          <motion.div
+        {plans.map((plan) => (
+          <div
             key={plan.name}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4, delay: i * 0.08, ease: "easeOut" }}
             className={`relative rounded-2xl p-8 flex flex-col ${
               plan.highlighted
                 ? "bg-foreground text-background border-2 border-foreground shadow-2xl scale-105"
@@ -84,7 +73,7 @@ const PricingSection = () => (
             >
               Записаться
             </a>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>
