@@ -30,10 +30,10 @@ const ForWhomSection = () => (
 
       <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
+          initial={{ opacity: 0, x: -16 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           className="rounded-2xl border border-primary/20 bg-accent p-8"
         >
           <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
@@ -51,10 +51,10 @@ const ForWhomSection = () => (
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
+          initial={{ opacity: 0, x: 16 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
           className="rounded-2xl border border-border bg-card p-8"
         >
           <h3 className="text-xl font-semibold mb-6 flex items-center gap-2 text-muted-foreground">

@@ -30,10 +30,10 @@ const PainsSection = () => (
         {pains.map((pain, i) => (
           <motion.div
             key={pain.title}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.4, delay: i * 0.08, ease: "easeOut" }}
             className="rounded-xl bg-card p-6 border border-border hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1"
           >
             <div className="h-12 w-12 rounded-lg bg-accent flex items-center justify-center mb-4">
