@@ -7,6 +7,7 @@ import AboutSection from "@/components/AboutSection";
 import PricingSection from "@/components/PricingSection";
 import ApplicationSection from "@/components/ApplicationSection";
 import FooterSection from "@/components/FooterSection";
+import CookieConsent from "@/components/CookieConsent";
 
 const Index = () => (
   <main className="min-h-screen bg-background">
@@ -19,6 +20,7 @@ const Index = () => (
     <PricingSection />
     <ApplicationSection />
     <FooterSection />
+    <CookieConsent />
   </main>
 );
 
