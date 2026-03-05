@@ -2,7 +2,6 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { useRef, useState, useEffect, useCallback } from "react";
 import { X } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
-import GridScan from "./GridScan";
 
 const stats = [
   { value: "20", label: "мест офлайн · Казань" },
@@ -69,27 +68,6 @@ const HeroSection = () => {
         <div className="absolute inset-0 z-0">
           <img src={heroBg} alt="" className="w-full h-full object-cover opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-br from-background via-background/80 to-transparent" />
-        </div>
-
-        {/* GridScan 3D effect overlay */}
-        <div className="absolute inset-0 z-[1] pointer-events-auto">
-          <GridScan
-            sensitivity={0.55}
-            lineThickness={1}
-            linesColor="#3d2a1e"
-            gridScale={0.1}
-            scanColor="#D4714E"
-            scanOpacity={0.35}
-            enablePost
-            bloomIntensity={0.6}
-            chromaticAberration={0.002}
-            noiseIntensity={0.008}
-            scanGlow={0.5}
-            scanSoftness={2}
-            scanPhaseTaper={0.9}
-            scanDuration={2.5}
-            scanDelay={2.0}
-          />
         </div>
 
         <div className="container relative z-10 py-20 md:py-32">
