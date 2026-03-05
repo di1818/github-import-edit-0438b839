@@ -111,11 +111,11 @@ const ApplicationSection = () => {
                   />
                   <span className="text-xs text-muted-foreground leading-relaxed">
                     Я даю{" "}
-                    <a href="/docs/согласие_на_обработку_персональных_данных.docx" target="_blank" className="underline text-primary hover:text-primary/80 transition-colors">
+                    <a href="https://hr-inst.ru/docs/personal-consent.html" target="_blank" rel="noopener noreferrer" className="underline text-primary hover:text-primary/80 transition-colors">
                       согласие на обработку персональных данных
                     </a>{" "}
                     в соответствии с{" "}
-                    <a href="/docs/политика_обработки_персональных_данных.docx" target="_blank" className="underline text-primary hover:text-primary/80 transition-colors">
+                    <a href="https://hr-inst.ru/docs/privacy.html" target="_blank" rel="noopener noreferrer" className="underline text-primary hover:text-primary/80 transition-colors">
                       политикой обработки персональных данных
                     </a>{" "}
                     <span className="text-destructive">*</span>
@@ -131,7 +131,7 @@ const ApplicationSection = () => {
                   />
                   <span className="text-xs text-muted-foreground leading-relaxed">
                     Я даю{" "}
-                    <a href="/docs/согласие_на_получение_рекламных_материалов.docx" target="_blank" className="underline text-primary hover:text-primary/80 transition-colors">
+                    <a href="https://hr-inst.ru/docs/marketing-consent.html" target="_blank" rel="noopener noreferrer" className="underline text-primary hover:text-primary/80 transition-colors">
                       согласие на получение рекламных материалов
                     </a>
                   </span>
@@ -160,7 +160,7 @@ const ApplicationSection = () => {
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-muted-foreground">
             <a href="tel:+79871837315" className="flex items-center gap-2 hover:text-foreground transition-colors">
-              <span>📞</span> +7 (987) 183-73-15 — Екатерина
+              <span>📞</span> +7 (987) 183-73-15
             </a>
             <span className="hidden sm:inline text-border">|</span>
             <a href="https://t.me/test66_tts_bot" className="flex items-center gap-2 hover:text-foreground transition-colors">
