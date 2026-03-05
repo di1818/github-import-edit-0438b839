@@ -3,7 +3,6 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import { X } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import Particles from "@/components/Particles";
-import TiltedButton from "@/components/TiltedButton";
 
 const stats = [
   { value: "20", label: "мест офлайн · Казань" },
