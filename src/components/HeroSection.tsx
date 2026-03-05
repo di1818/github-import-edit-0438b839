@@ -2,16 +2,14 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { useRef, useState, useEffect, useCallback } from "react";
 import { X } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
-import DotGrid from "@/components/DotGrid";
+import Particles from "@/components/Particles";
+import TiltedButton from "@/components/TiltedButton";
 
 const stats = [
   { value: "20", label: "мест офлайн · Казань" },
   { value: "40", label: "мест онлайн · любая точка" },
 ];
 
-// Вставьте сюда ссылку на embed-видео (VK, Rutube, YouTube)
-// VK пример: "https://vk.com/video_ext.php?oid=-12345&id=456789"
-// Rutube пример: "https://rutube.ru/play/embed/VIDEO_ID"
 const VIDEO_EMBED_URL = "";
 
 const HeroSection = () => {
@@ -29,12 +27,10 @@ const HeroSection = () => {
   const videoRotate = useTransform(scrollYProgress, [0, 1], [2, -4]);
   const videoScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
 
-  // Track when video section scrolls out of view → switch to mini player
   const handleScroll = useCallback(() => {
     if (!isPlaying || !videoContainerRef.current) return;
     const rect = videoContainerRef.current.getBoundingClientRect();
-    const outOfView = rect.bottom < 100;
-    setIsMini(outOfView);
+    setIsMini(rect.bottom < 100);
   }, [isPlaying]);
 
   useEffect(() => {
@@ -65,22 +61,27 @@ const HeroSection = () => {
   return (
     <>
       <section ref={sectionRef} className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background */}
+        {/* Background image */}
         <div className="absolute inset-0 z-0">
           <img src={heroBg} alt="" className="w-full h-full object-cover opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-br from-background via-background/80 to-transparent" />
         </div>
 
-        {/* Interactive dot grid */}
-        <div className="absolute inset-0 z-[1] opacity-40">
-          <DotGrid
-            dotSize={3}
-            gap={20}
-            proximity={90}
-            shockRadius={180}
-            shockStrength={5}
-            springStiffness={0.025}
-            damping={0.88}
+        {/* Particles overlay */}
+        <div className="absolute inset-0 z-[1] opacity-30 pointer-events-none">
+          <Particles
+            particleColors={["#e8734a", "#d4603a", "#f5a882", "#ffffff"]}
+            particleCount={150}
+            particleSpread={10}
+            speed={0.08}
+            particleBaseSize={80}
+            moveParticlesOnHover
+            particleHoverFactor={1}
+            alphaParticles
+            disableRotation={false}
+            sizeRandomness={1}
+            cameraDistance={20}
+            pixelRatio={1}
           />
         </div>
 
@@ -135,18 +136,18 @@ const HeroSection = () => {
                 transition={{ duration: 0.7, delay: 0.3 }}
                 className="flex flex-col sm:flex-row gap-4"
               >
-                <a
+                <TiltedButton
                   href="#application"
-                  className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
                 >
                   Записаться на консультацию
-                </a>
-                <a
+                </TiltedButton>
+                <TiltedButton
                   href="#program"
                   className="inline-flex items-center justify-center rounded-lg border border-border px-8 py-4 text-lg font-medium text-foreground hover:bg-secondary transition-colors duration-300"
                 >
                   Подробнее о программе
-                </a>
+                </TiltedButton>
               </motion.div>
 
               <motion.div
@@ -164,7 +165,7 @@ const HeroSection = () => {
               </motion.div>
             </div>
 
-            {/* Video */}
+            {/* Video — desktop */}
             <motion.div
               ref={videoContainerRef}
               initial={{ opacity: 0, x: 40 }}
@@ -175,23 +176,14 @@ const HeroSection = () => {
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 border border-border bg-card">
                 <div className="aspect-video relative">
-                  {isPlaying && !isMini ? (
-                    videoIframe
-                  ) : (
-                    <button
-                      onClick={handlePlay}
-                      className="absolute inset-0 flex flex-col items-center justify-center bg-muted cursor-pointer group"
-                    >
+                  {isPlaying && !isMini ? videoIframe : (
+                    <button onClick={handlePlay} className="absolute inset-0 flex flex-col items-center justify-center bg-muted cursor-pointer group">
                       <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                        <svg className="w-8 h-8 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
+                        <svg className="w-8 h-8 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                       </div>
                       <p className="text-muted-foreground text-sm font-medium">Видео о программе</p>
                       <p className="text-muted-foreground/60 text-xs mt-1">HR Инструментарий</p>
-                      {!VIDEO_EMBED_URL && (
-                        <p className="text-destructive/60 text-xs mt-3">Ссылка на видео не указана</p>
-                      )}
+                      {!VIDEO_EMBED_URL && <p className="text-destructive/60 text-xs mt-3">Ссылка на видео не указана</p>}
                     </button>
                   )}
                 </div>
@@ -200,26 +192,17 @@ const HeroSection = () => {
               </div>
             </motion.div>
 
-            {/* Mobile video */}
+            {/* Video — mobile */}
             <div className="lg:hidden">
               <div className="relative rounded-2xl overflow-hidden shadow-xl border border-border bg-card">
                 <div className="aspect-video relative">
-                  {isPlaying && !isMini ? (
-                    videoIframe
-                  ) : (
-                    <button
-                      onClick={handlePlay}
-                      className="absolute inset-0 flex flex-col items-center justify-center bg-muted cursor-pointer group"
-                    >
+                  {isPlaying && !isMini ? videoIframe : (
+                    <button onClick={handlePlay} className="absolute inset-0 flex flex-col items-center justify-center bg-muted cursor-pointer group">
                       <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
-                        <svg className="w-7 h-7 text-primary ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
+                        <svg className="w-7 h-7 text-primary ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                       </div>
                       <p className="text-muted-foreground text-sm font-medium">Видео о программе</p>
-                      {!VIDEO_EMBED_URL && (
-                        <p className="text-destructive/60 text-xs mt-2">Ссылка на видео не указана</p>
-                      )}
+                      {!VIDEO_EMBED_URL && <p className="text-destructive/60 text-xs mt-2">Ссылка на видео не указана</p>}
                     </button>
                   )}
                 </div>
@@ -229,7 +212,7 @@ const HeroSection = () => {
         </div>
       </section>
 
-      {/* Mini player — fixed in corner when scrolled away */}
+      {/* Mini player */}
       <AnimatePresence>
         {isPlaying && isMini && (
           <motion.div
@@ -239,9 +222,7 @@ const HeroSection = () => {
             transition={{ duration: 0.3 }}
             className="fixed bottom-4 right-4 z-50 w-[320px] sm:w-[400px] rounded-xl overflow-hidden shadow-2xl border border-border bg-card"
           >
-            <div className="aspect-video relative">
-              {videoIframe}
-            </div>
+            <div className="aspect-video relative">{videoIframe}</div>
             <button
               onClick={handleCloseMini}
               className="absolute top-2 right-2 h-8 w-8 rounded-full bg-foreground/80 text-background flex items-center justify-center hover:bg-foreground transition-colors"
