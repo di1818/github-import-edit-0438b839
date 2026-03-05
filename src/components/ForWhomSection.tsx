@@ -33,10 +33,20 @@ const ForWhomSection = () => (
           <div className="rounded-2xl border border-primary/20 bg-accent p-8 h-full">
             <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
               <CheckCircle className="h-6 w-6 text-primary" />
-              Подходит
+              Подойдёт
             </h3>
-            <ul className="space-y-4">
+            <p className="text-sm font-medium text-muted-foreground mb-3">HR которые сталкиваются с:</p>
+            <ul className="space-y-4 mb-6">
               {suitable.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm font-medium text-muted-foreground mb-3">Подойдёт компаниям, где:</p>
+            <ul className="space-y-4">
+              {suitableCompanies.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm">
                   <span className="h-1.5 w-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
                   {item}
