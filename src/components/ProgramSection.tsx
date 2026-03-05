@@ -23,7 +23,7 @@ const ProgramSection = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
         {modules.map((mod, i) => (
           <Reveal key={mod.num} delay={i * 80}>
-            <div className="group relative glow-card gradient-border rounded-2xl border border-border bg-card p-8 hover:border-primary/30 transition-all duration-300 h-full">
+            <div className="group relative rounded-2xl border border-border bg-card p-8 hover:border-primary/30 transition-all duration-300 h-full">
               <div className="flex items-start justify-between mb-6">
                 <span className="text-5xl font-bold font-display text-muted/80">{mod.num}</span>
                 <span className="text-xs font-medium text-muted-foreground bg-secondary px-3 py-1 rounded-full">

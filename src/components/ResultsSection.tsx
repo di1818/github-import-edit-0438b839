@@ -38,7 +38,7 @@ const ResultsSection = () => (
             {artifacts.map((item) => (
               <div
                 key={item.text}
-                className="flex items-center gap-4 p-4 rounded-xl bg-background/5 border border-background/10 hover:bg-background/10 transition-all duration-300 hover:translate-x-1"
+                className="flex items-center gap-4 p-4 rounded-xl bg-background/5 border border-background/10"
               >
                 <div className="h-10 w-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0">
                   <item.icon className="h-5 w-5 text-primary" />

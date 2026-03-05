@@ -10,7 +10,7 @@ const AboutSection = () => (
             <div className="aspect-[3/4] rounded-2xl overflow-hidden">
               <img src={instructorImg} alt="Преподаватель программы" className="w-full h-full object-cover" />
             </div>
-            <div className="absolute -bottom-4 -right-4 h-32 w-32 rounded-2xl bg-primary/10 -z-10 animate-float" />
+            <div className="absolute -bottom-4 -right-4 h-32 w-32 rounded-2xl bg-primary/10 -z-10" />
           </div>
         </Reveal>
 

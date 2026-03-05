@@ -181,8 +181,8 @@ const HeroSection = () => {
                     </button>
                   )}
                 </div>
-                <div className="absolute -top-3 -right-3 w-24 h-24 rounded-full bg-primary/5 -z-10 animate-float" />
-                <div className="absolute -bottom-4 -left-4 w-32 h-32 rounded-full bg-accent -z-10 animate-float" style={{ animationDelay: '3s' }} />
+                <div className="absolute -top-3 -right-3 w-24 h-24 rounded-full bg-primary/5 -z-10" />
+                <div className="absolute -bottom-4 -left-4 w-32 h-32 rounded-full bg-accent -z-10" />
               </div>
             </motion.div>
 
