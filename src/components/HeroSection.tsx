@@ -2,8 +2,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { useRef, useState, useEffect, useCallback } from "react";
 import { X } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
-import Particles from "@/components/Particles";
-import TiltedButton from "@/components/TiltedButton";
+
 
 const stats = [
   { value: "20", label: "мест офлайн · Казань" },
@@ -67,24 +66,6 @@ const HeroSection = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-background via-background/80 to-transparent" />
         </div>
 
-        {/* Particles overlay */}
-        <div className="absolute inset-0 z-[1] opacity-30 pointer-events-none">
-          <Particles
-            particleColors={["#e8734a", "#d4603a", "#f5a882", "#ffffff"]}
-            particleCount={150}
-            particleSpread={10}
-            speed={0.08}
-            particleBaseSize={80}
-            moveParticlesOnHover
-            particleHoverFactor={1}
-            alphaParticles
-            disableRotation={false}
-            sizeRandomness={1}
-            cameraDistance={20}
-            pixelRatio={1}
-          />
-        </div>
-
         <div className="container relative z-10 py-20 md:py-32">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Text */}
@@ -136,18 +117,18 @@ const HeroSection = () => {
                 transition={{ duration: 0.7, delay: 0.3 }}
                 className="flex flex-col sm:flex-row gap-4"
               >
-                <TiltedButton
+                <a
                   href="#application"
-                  className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
+                  className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5"
                 >
                   Записаться на консультацию
-                </TiltedButton>
-                <TiltedButton
+                </a>
+                <a
                   href="#program"
                   className="inline-flex items-center justify-center rounded-lg border border-border px-8 py-4 text-lg font-medium text-foreground hover:bg-secondary transition-colors duration-300"
                 >
                   Подробнее о программе
-                </TiltedButton>
+                </a>
               </motion.div>
 
               <motion.div
