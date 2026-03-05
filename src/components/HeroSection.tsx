@@ -71,6 +71,19 @@ const HeroSection = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-background via-background/80 to-transparent" />
         </div>
 
+        {/* Interactive dot grid */}
+        <div className="absolute inset-0 z-[1] opacity-40">
+          <DotGrid
+            dotSize={3}
+            gap={20}
+            proximity={90}
+            shockRadius={180}
+            shockStrength={5}
+            springStiffness={0.025}
+            damping={0.88}
+          />
+        </div>
+
         <div className="container relative z-10 py-20 md:py-32">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Text */}
