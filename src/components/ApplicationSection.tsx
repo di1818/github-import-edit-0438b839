@@ -131,7 +131,7 @@ const ApplicationSection = () => {
                   />
                   <span className="text-xs text-muted-foreground leading-relaxed">
                     Я даю{" "}
-                    <a href="/docs/согласие_на_получение_рекламных_материалов.docx" target="_blank" className="underline text-primary hover:text-primary/80 transition-colors">
+                    <a href="https://hr-inst.ru/docs/marketing-consent.html" target="_blank" rel="noopener noreferrer" className="underline text-primary hover:text-primary/80 transition-colors">
                       согласие на получение рекламных материалов
                     </a>
                   </span>
