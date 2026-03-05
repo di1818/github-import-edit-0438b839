@@ -26,10 +26,6 @@ const AboutSection = () => (
               Ваш HR-менеджер получит систему, которая работает на результат.»
             </p>
           </blockquote>
-          <div className="bg-accent rounded-xl p-6">
-            <p className="text-sm text-muted-foreground mb-3 font-medium">Сопровождение после программы:</p>
-            <p className="text-foreground">6 месяцев в Telegram-чате с разбором кейсов 1 раз в месяц</p>
-          </div>
         </Reveal>
       </div>
     </div>

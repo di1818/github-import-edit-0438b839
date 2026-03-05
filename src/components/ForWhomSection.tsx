@@ -60,7 +60,7 @@ const ForWhomSection = () => (
           <div className="rounded-2xl border border-border bg-card p-8 h-full">
             <h3 className="text-xl font-semibold mb-6 flex items-center gap-2 text-muted-foreground">
               <XCircle className="h-6 w-6" />
-              Не подходит
+              Не подойдёт
             </h3>
             <ul className="space-y-4 text-muted-foreground">
               {notSuitable.map((item) => (
