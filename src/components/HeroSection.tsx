@@ -66,24 +66,6 @@ const HeroSection = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-background via-background/80 to-transparent" />
         </div>
 
-        {/* Particles overlay */}
-        <div className="absolute inset-0 z-[1] opacity-30 pointer-events-none">
-          <Particles
-            particleColors={["#e8734a", "#d4603a", "#f5a882", "#ffffff"]}
-            particleCount={150}
-            particleSpread={10}
-            speed={0.08}
-            particleBaseSize={80}
-            moveParticlesOnHover
-            particleHoverFactor={1}
-            alphaParticles
-            disableRotation={false}
-            sizeRandomness={1}
-            cameraDistance={20}
-            pixelRatio={1}
-          />
-        </div>
-
         <div className="container relative z-10 py-20 md:py-32">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Text */}
