@@ -38,7 +38,7 @@ const HeroSection = () => {
             >
               <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
               <span className="text-sm font-medium text-accent-foreground">
-                Казань · Старт 10 марта · Офлайн 20 мест + Онлайн
+                Казань · Офлайн 20 мест + Онлайн
               </span>
             </motion.div>
 
