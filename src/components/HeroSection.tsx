@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { useRef, useState, useEffect, useCallback } from "react";
 import { X } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import GridScan from "./GridScan";
 
 const stats = [
   { value: "20", label: "мест офлайн · Казань" },
