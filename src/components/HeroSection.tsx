@@ -135,18 +135,18 @@ const HeroSection = () => {
                 transition={{ duration: 0.7, delay: 0.3 }}
                 className="flex flex-col sm:flex-row gap-4"
               >
-                <TiltedButton
+                <a
                   href="#application"
-                  className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
+                  className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5"
                 >
                   Записаться на консультацию
-                </TiltedButton>
-                <TiltedButton
+                </a>
+                <a
                   href="#program"
                   className="inline-flex items-center justify-center rounded-lg border border-border px-8 py-4 text-lg font-medium text-foreground hover:bg-secondary transition-colors duration-300"
                 >
                   Подробнее о программе
-                </TiltedButton>
+                </a>
               </motion.div>
 
               <motion.div
