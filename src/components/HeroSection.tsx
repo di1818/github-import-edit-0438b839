@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { useRef, useState, useEffect, useCallback } from "react";
 import { X } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import DotGrid from "@/components/DotGrid";
 
 const stats = [
   { value: "20", label: "мест офлайн · Казань" },
@@ -68,6 +69,19 @@ const HeroSection = () => {
         <div className="absolute inset-0 z-0">
           <img src={heroBg} alt="" className="w-full h-full object-cover opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-br from-background via-background/80 to-transparent" />
+        </div>
+
+        {/* Interactive dot grid */}
+        <div className="absolute inset-0 z-[1] opacity-40">
+          <DotGrid
+            dotSize={3}
+            gap={20}
+            proximity={90}
+            shockRadius={180}
+            shockStrength={5}
+            springStiffness={0.025}
+            damping={0.88}
+          />
         </div>
 
         <div className="container relative z-10 py-20 md:py-32">
