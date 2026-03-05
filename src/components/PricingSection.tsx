@@ -53,7 +53,7 @@ const PricingSection = () => {
 
   return (
     <section id="pricing" className="section-padding bg-secondary/50">
-      <div className="container">
+      <div className="container section-glow">
         <Reveal className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold font-display mb-4">Стоимость</h2>
           <p className="text-muted-foreground text-lg">Выберите формат участия. Цены одинаковы для офлайн и онлайн.</p>
@@ -62,11 +62,11 @@ const PricingSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {plans.map((plan, i) => (
             <Reveal key={plan.name} delay={i * 100}>
-              <div
-                className={`relative rounded-2xl p-8 flex flex-col h-full ${
+               <div
+                className={`relative rounded-2xl p-8 flex flex-col h-full transition-all duration-500 ${
                   plan.highlighted
-                    ? "bg-foreground text-background border-2 border-foreground shadow-2xl md:scale-105"
-                    : "bg-card border border-border"
+                    ? "bg-foreground text-background border-2 border-foreground shadow-2xl md:scale-105 shimmer"
+                    : "bg-card border border-border glow-card hover:-translate-y-1"
                 }`}
               >
                 {plan.highlighted && (

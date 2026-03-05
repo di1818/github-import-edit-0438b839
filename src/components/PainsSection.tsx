@@ -23,7 +23,7 @@ const PainsSection = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {pains.map((pain, i) => (
           <Reveal key={pain.title} delay={i * 80}>
-            <div className="rounded-xl bg-card p-6 border border-border hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 h-full">
+            <div className="glow-card rounded-xl bg-card p-6 border border-border hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 h-full">
               <div className="h-12 w-12 rounded-lg bg-accent flex items-center justify-center mb-4">
                 <pain.icon className="h-6 w-6 text-accent-foreground" />
               </div>
