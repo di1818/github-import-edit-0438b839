@@ -69,7 +69,6 @@ const PricingSection = () => {
                     : "bg-card border border-border glow-card hover:-translate-y-1"
                 }`}
               >
-              >
                 {plan.highlighted && (
                   <>
                     <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-semibold px-4 py-1 rounded-full">
