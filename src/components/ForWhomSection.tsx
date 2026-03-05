@@ -25,6 +25,7 @@ const ForWhomSection = () => (
     <div className="container">
       <Reveal className="text-center mb-16">
         <h2 className="text-3xl md:text-5xl font-bold font-display mb-4">Для кого эта программа</h2>
+        <p className="text-muted-foreground text-lg">HR-менеджер · HR-генералист · HRBP</p>
       </Reveal>
 
       <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
