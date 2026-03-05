@@ -100,7 +100,9 @@ const PricingSection = () => {
                   </>
                 )}
 
-                <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
+                <h3 className={`text-2xl font-bold font-display mb-2 ${plan.highlighted ? "" : "text-gradient"}`}>
+                  {plan.name}
+                </h3>
                 <p className={`text-sm mb-6 ${plan.highlighted ? "opacity-70" : "text-muted-foreground"}`}>
                   {plan.desc}
                 </p>
