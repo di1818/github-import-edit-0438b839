@@ -29,8 +29,6 @@ const FooterSection = () => (
             rel="noopener noreferrer"
             className="underline underline-offset-2 hover:text-foreground transition-colors"
           >
-            className="underline underline-offset-2 hover:text-foreground transition-colors"
-          >
             {doc.label}
           </a>
         ))}

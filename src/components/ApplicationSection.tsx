@@ -111,11 +111,11 @@ const ApplicationSection = () => {
                   />
                   <span className="text-xs text-muted-foreground leading-relaxed">
                     Я даю{" "}
-                    <a href="/docs/согласие_на_обработку_персональных_данных.docx" target="_blank" className="underline text-primary hover:text-primary/80 transition-colors">
+                    <a href="https://hr-inst.ru/docs/personal-consent.html" target="_blank" rel="noopener noreferrer" className="underline text-primary hover:text-primary/80 transition-colors">
                       согласие на обработку персональных данных
                     </a>{" "}
                     в соответствии с{" "}
-                    <a href="/docs/политика_обработки_персональных_данных.docx" target="_blank" className="underline text-primary hover:text-primary/80 transition-colors">
+                    <a href="https://hr-inst.ru/docs/privacy.html" target="_blank" rel="noopener noreferrer" className="underline text-primary hover:text-primary/80 transition-colors">
                       политикой обработки персональных данных
                     </a>{" "}
                     <span className="text-destructive">*</span>
