@@ -18,7 +18,7 @@ const plans = [
   },
   {
     name: "Обучение + Аудит",
-    price: "250 000",
+    price: null,
     desc: "Программа + аудит HR-процессов вашей компании + внедрение под контролем эксперта",
     features: ["Всё из базового пакета", "Аудит HR-процессов компании", "Внедрение под контролем", "Индивидуальное сопровождение", "Максимальный результат"],
     highlighted: false,
@@ -53,8 +53,16 @@ const PricingSection = () => (
                 {plan.desc}
               </p>
               <div className="mb-6">
-                <span className="text-4xl font-bold font-display">{plan.price}</span>
-                <span className={`text-sm ml-1 ${plan.highlighted ? "opacity-60" : "text-muted-foreground"}`}>₽</span>
+                {plan.price ? (
+                  <>
+                    <span className="text-4xl font-bold font-display">{plan.price}</span>
+                    <span className={`text-sm ml-1 ${plan.highlighted ? "opacity-60" : "text-muted-foreground"}`}>₽</span>
+                  </>
+                ) : (
+                  <p className={`text-sm ${plan.highlighted ? "opacity-70" : "text-muted-foreground"}`}>
+                    Цена будет доступна после индивидуальной консультации
+                  </p>
+                )}
               </div>
               <ul className="space-y-3 mb-8 flex-1">
                 {plan.features.map((f) => (

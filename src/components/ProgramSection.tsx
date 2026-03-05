@@ -16,7 +16,7 @@ const ProgramSection = () => (
           Программа: <span className="text-gradient">4 модуля</span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-          8 недель, 1 раз в неделю по 2 часа. Офлайн в Казани (20 мест) или онлайн. Практика и внедрение в вашей компании.
+          8 недель, 1 раз в неделю по 2 часа. Практика и внедрение в вашей компании.
         </p>
       </Reveal>
 

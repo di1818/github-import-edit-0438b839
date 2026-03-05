@@ -38,7 +38,7 @@ const HeroSection = () => {
             >
               <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
               <span className="text-sm font-medium text-accent-foreground">
-                Казань · Старт 10 марта · Офлайн 20 мест + Онлайн
+                Казань · Офлайн 20 мест + Онлайн
               </span>
             </motion.div>
 
@@ -57,7 +57,7 @@ const HeroSection = () => {
               transition={{ duration: 0.7, delay: 0.15 }}
               className="text-xl md:text-2xl font-semibold text-foreground mb-6"
             >
-              Перестаньте терять деньги на неэффективном найме
+              Сильный HR отдел, который управляет системой — а не тушит пожары
             </motion.p>
 
             <motion.p
@@ -66,9 +66,9 @@ const HeroSection = () => {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed"
             >
-              Ваш HR-менеджер пройдёт обучение до уровня HRBP и уже в процессе
-              начнёт внедрять систему подбора, адаптации и управления персоналом
-              в вашей компании.
+              8 недель практики и внедрения: найм, адаптация, метрики,
+              роль HR в бизнесе — чтобы HR мог влиять на результат
+              и говорить с руководством на языке бизнеса.
             </motion.p>
 
             <motion.div

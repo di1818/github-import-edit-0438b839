@@ -47,6 +47,9 @@ const ResultsSection = () => (
               </div>
             ))}
           </div>
+          <div className="mt-8 p-5 rounded-xl bg-background/5 border border-background/10">
+            <p className="font-medium opacity-90">6 месяцев сопровождения в Telegram-чате с ежемесячным разбором кейсов</p>
+          </div>
         </Reveal>
       </div>
     </div>
