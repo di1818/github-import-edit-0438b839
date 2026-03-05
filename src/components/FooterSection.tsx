@@ -27,7 +27,8 @@ const FooterSection = () => (
             href={doc.href}
             target="_blank"
             rel="noopener noreferrer"
-            download
+            className="underline underline-offset-2 hover:text-foreground transition-colors"
+          >
             className="underline underline-offset-2 hover:text-foreground transition-colors"
           >
             {doc.label}

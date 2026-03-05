@@ -160,7 +160,7 @@ const ApplicationSection = () => {
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-muted-foreground">
             <a href="tel:+79871837315" className="flex items-center gap-2 hover:text-foreground transition-colors">
-              <span>📞</span> +7 (987) 183-73-15 — Екатерина
+              <span>📞</span> +7 (987) 183-73-15
             </a>
             <span className="hidden sm:inline text-border">|</span>
             <a href="https://t.me/test66_tts_bot" className="flex items-center gap-2 hover:text-foreground transition-colors">
